@@ -1,0 +1,30 @@
+# --- Project files
+
+# log files
+*.log
+
+# --- Python files
+
+# compiled source
+*.pyc
+
+# testing
+.cache
+.coverage
+.coverage.*
+.pytest_cache
+
+# --- Miscellaneous
+
+# direnv
+/.direnv
+
+# vim
+.*.swp
+
+# macOS
+.DS_Store*
+
+# --- DVC
+
+/data
