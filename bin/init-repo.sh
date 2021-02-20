@@ -395,6 +395,9 @@ fi
 cmd="git rm -r --cached $_DATA_DIR"
 git_rm_status=$(run_cmd $_ERR_FILE $cmd)
 
+cmd="rm -f $_DATA_DIR/.git-keep-dir"
+rm_git_keep_dir_status=$(run_cmd $_ERR_FILE $cmd)
+
 cmd="dvc add $_DATA_DIR"
 dvc_add_status=$(run_cmd $_ERR_FILE $cmd)
 
@@ -404,7 +407,7 @@ git_add_status=$(run_cmd $_ERR_FILE $cmd)
 cmd="git commit -m \"Transfer tracking of '$_DATA_DIR' directory from Git to DVC\""
 git_commit_status=$(run_cmd $_ERR_FILE $cmd)
 
-if [ $git_rm_status -ne 0 -o $dvc_add_status -ne 0 -o $git_add_status -ne 0 -o $git_commit_status -ne 0 ]; then
+if [ $git_rm_status -ne 0 -o $rm_git_keep_dir_status -ne 0 -o $dvc_add_status -ne 0 -o $git_add_status -ne 0 -o $git_commit_status -ne 0 ]; then
     echo "ERROR: Failed to transfer tracking of '$_DATA_DIR' directory to DVC." >&2
     echo "For details, see '$_ERR_FILE'" >&2
     exit $_EXIT_CODE_CONFIG_FILE_ERR_ADD_REMOTE_STORAGE_FAILED
