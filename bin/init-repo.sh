@@ -147,7 +147,8 @@ _VALID_STORAGE_PROVIDERS="local aws"
 _DATA_DIR="data"
 
 # Error file
-_ERR_FILE="init-dataset.err"
+_SCRIPT_NAME=`basename $0`
+_ERR_FILE="${_SCRIPT_NAME%.sh}.err"
 
 #-----------------------------------------------------------------------------
 # Process command-line
