@@ -28,5 +28,5 @@
 
 # --- DVC
 
-/config.yaml
+/*.yaml
 /data
