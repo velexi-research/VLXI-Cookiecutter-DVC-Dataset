@@ -308,10 +308,15 @@ elif [ "$storage_provider" = "aws" ]; then
     dvc_pkg=dvc[s3]
 fi
 
+# Generate requirements.txt file
+cmd="echo '# DVC' > requirements.txt; echo $dvc_pkg >> requirements.txt"
+cat_requirements_status=$(run_cmd $_ERR_FILE $cmd)
+
 # Install DVC
-cmd="pip install $dvc_pkg"
+cmd="pip install -r requirements.txt"
 pip_install_status=$(run_cmd $_ERR_FILE $cmd)
-if [ $pip_install_status -ne 0 ]; then
+
+if [ $cat_requirements_status -ne 0 -o $pip_install_status -ne 0 ]; then
     echo "ERROR: Failed to install DVC. For details, see '$_ERR_FILE'" >&2
     exit $_EXIT_CODE_CONFIG_FILE_ERR_INSTALL_DVC_FAILED
 else
@@ -334,9 +339,11 @@ if ! $quiet; then
     echo -n $status_message
 fi
 
+# Initialize DVC
 cmd="dvc init"
 dvc_init_status=$(run_cmd $_ERR_FILE $cmd)
 
+# Commit DVC files to git repository
 cmd="git commit -m \"Initialize DVC\""
 git_commit_status=$(run_cmd $_ERR_FILE $cmd)
 
@@ -364,12 +371,15 @@ elif [ "$storage_provider" = "aws" ]; then
     remote_storage_url="s3://$aws_s3_bucket"
 fi
 
+# Add DVC remote storage
 cmd="dvc remote add -d $storage_name $remote_storage_url"
 dvc_remote_add_status=$(run_cmd $_ERR_FILE $cmd)
 
+# Add DVC files to git repository
 cmd="git add .dvc/config"
 git_add_status=$(run_cmd $_ERR_FILE $cmd)
 
+# Commit DVC files to git repository
 cmd="git commit -m \"Add remote storage\""
 git_commit_status=$(run_cmd $_ERR_FILE $cmd)
 
@@ -392,18 +402,23 @@ if ! $quiet; then
     echo -n $status_message
 fi
 
+# Remove $_DATA_DIR from git management
 cmd="git rm -r --cached $_DATA_DIR"
 git_rm_status=$(run_cmd $_ERR_FILE $cmd)
 
+# Remove .git-keep-dir
 cmd="rm -f $_DATA_DIR/.git-keep-dir"
 rm_git_keep_dir_status=$(run_cmd $_ERR_FILE $cmd)
 
+# Add $_DATA_DIR to DVC management
 cmd="dvc add $_DATA_DIR"
 dvc_add_status=$(run_cmd $_ERR_FILE $cmd)
 
+# Add DVC files to git repository
 cmd="git add $_DATA_DIR.dvc"
 git_add_status=$(run_cmd $_ERR_FILE $cmd)
 
+# Commit DVC files to git repository
 cmd="git commit -m \"Transfer tracking of '$_DATA_DIR' directory from Git to DVC\""
 git_commit_status=$(run_cmd $_ERR_FILE $cmd)
 
