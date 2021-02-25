@@ -23,7 +23,7 @@ Table of Contents
 
     2.1. [Setting Up the Dataset Repository][#2.1]
 
-    2.2. [Template Files][#2.2]
+    2.2. [Example and Template Files][#2.2]
 
 3. [Usage][#3]
 
@@ -71,17 +71,14 @@ managed by DVC. It encourages the following dataset management practices.
 ### 1.2. Package Contents
 
     README.md
-    README-Template-Usage.md
     LICENSE
     bin/
     data/
-    templates/
+    template-docs/
 
-* `README.md`: symbolic link to this file
+* `README.md`: this file (same as `template-docs/README-Template-Usage.md`)
 
-* `README-Template-Usage.md`: this file
-
-* `LICENSE`: license file for this template repository
+* `LICENSE`: license file for this repository template
 
 * `bin`: directory where scripts and programs for maintaining the dataset
   (e.g., scripts to download data from public websites, scripts to clean up
@@ -89,7 +86,8 @@ managed by DVC. It encourages the following dataset management practices.
 
 * `data`: directory where dataset should be placed
 
-* `templates`: directory containing template files
+* `template-docs`: directory containing documentation (including a copy of
+  this file) and examples for this repository template
 
 ### 1.3. License
 
@@ -112,11 +110,11 @@ top-level directory of this repository.
 
 2. (OPTIONAL) Set up a Python virtual environment for the dataset repository.
 
-    * Copy `templates/envrc.template` to the top-level directory and rename it
-      to `.envrc`.
+    * Copy `template-docs/examples/envrc.example` to the top-level directory
+      and rename it to `.envrc`.
 
       ```
-      $ cp templates/envrc.template .envrc
+      $ cp template-docs/examples/envrc.example .envrc
       ```
 
     * Follow `direnv` instructions to enable `.envrc` file.
@@ -130,8 +128,8 @@ top-level directory of this repository.
 
 4. Initialize the dataset repository.
 
-    * Copy `templates/config.yaml.template` to the top-level directory and
-      rename it to `config.yaml`.
+    * Copy `template-docs/examples/config.yaml.example` to the top-level
+      directory and rename it to `config.yaml`.
 
     * Set the parameters for the dataset repository in `config.yaml`.
 
@@ -149,14 +147,14 @@ top-level directory of this repository.
       ```
 
 5. Replace the `README.md` and `LICENSE` files with dataset-specific versions.
-   Templates are available in the `templates` directory.
+   Exampes are available in the `template-docs/examples` directory.
 
-### 2.2. Template Files
+### 2.2. Example and Template Files
 
-Template files and directories are indicated by the 'template' suffix. These
-files and directories are intended to simplify the set up of the data
-repository. When appropriate, they should be renamed (with the 'template'
-suffix removed).
+Example and template files are indicated by the "example" and "template"
+suffixes, respectively. These files are intended to simplify the set up of
+the data repository. When appropriate, they should be renamed (with the
+"example" or "template" suffix removed).
 
 ------------------------------------------------------------------------------
 
@@ -281,7 +279,7 @@ The `README.md` file should contain
 
 [#2]: #2-getting-started
 [#2.1]: #21-setting-up-the-dataset-repository
-[#2.2]: #22-template-files
+[#2.2]: #22-example-and-template-files
 
 [#3]: #3-usage
 [#3.1]: #31-conventions
