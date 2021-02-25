@@ -1,4 +1,4 @@
-Velexi Template: DVC Dataset Repository (v0.1.1)
+Velexi Template: DVC Dataset Repository (v0.1.2)
 ================================================
 
 ___Authors___  
