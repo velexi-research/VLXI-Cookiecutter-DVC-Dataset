@@ -268,7 +268,7 @@ the dataset repository. A template `LICENSE-DATASET` file is available in the
    should be replaced with the version number for the release (e.g. v1.0.0).
 
     ```
-    $ git tag VERSION_NUMBER
+    $ git tag VERSION
     $ git push --tags
     ```
 
