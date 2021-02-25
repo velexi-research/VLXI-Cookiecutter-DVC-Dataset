@@ -143,7 +143,7 @@ top-level directory of this repository.
 
       ```
       $ git add requirements.txt
-      $ git commit
+      $ git commit requirements.txt -m "Add requirements.txt"
       ```
 
 5. Replace the `README.md` and `LICENSE` files with dataset-specific versions.
