@@ -41,13 +41,13 @@ List tools for creating and maintaining dataset.
 
 * Tool #2
 
-#### 2.1. Software Dependencies
+### 2.1. Software Dependencies
 
-##### Base Requirements
+#### Base Requirements
 
 * Python (>=3.9)
 
-##### Python Packages ####
+#### Python Packages
 
 See the `requirements.txt` file.
 
