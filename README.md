@@ -11,9 +11,9 @@ Table of Contents
 
 1. [Overview][#1]
 
-    1.1. [Software Dependencies][#1.1]
+    1.1. [Package Contents][#1.1]
 
-    1.2. [Package Contents][#1.2]
+    1.2. [Software Dependencies][#1.2]
 
     1.3. [License][#1.3]
 
@@ -55,22 +55,7 @@ managed by DVC. It encourages the following dataset management practices.
 * Simplify dataset maintenance by keeping the dataset management code
   (e.g., clean up scripts) with the dataset.
 
-### 1.1. Software Dependencies
-
-#### Base Requirements
-
-* Python (>=3.9)
-  * `pip`
-* `git`
-* `awk`
-* `sed`
-
-#### Optional Software
-
-* `direnv`: only needed if using `direnv` to manage the Python virtual
-  environment for the dataset repository.
-
-### 1.2. Package Contents
+### 1.1. Package Contents
 
     README.md
     LICENSE
@@ -94,6 +79,21 @@ managed by DVC. It encourages the following dataset management practices.
 
 * `template-docs`: directory containing documentation (including a copy of
   this file) and examples for this repository template
+
+### 1.2. Software Dependencies
+
+#### Base Requirements
+
+* Python (>=3.9)
+  * `pip`
+* `git`
+* `awk`
+* `sed`
+
+#### Optional Software
+
+* `direnv`: only needed if using `direnv` to manage the Python virtual
+  environment for the dataset repository.
 
 ### 1.3. License
 
@@ -370,8 +370,8 @@ In the example command above, the following substitutions should be made:
 [-----------------------------INTERNAL LINKS-----------------------------]: #
 
 [#1]: #1-overview
-[#1.1]: #11-software-dependencies
-[#1.2]: #12-package-contents
+[#1.1]: #11-package-contents
+[#1.2]: #12-software-dependencies
 [#1.3]: #13-license
 [#1.4]: #14-supported-dvc-remote-storage-providers
 
