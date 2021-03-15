@@ -168,11 +168,9 @@ root directory of this repository.
 
 5. Update documentation files for the dataset repository.
 
-    * Replace the `README.md` file `README.md.template` and update its
-      contents.
-
-    * Update the contents of all other template files and rename them with
-      the `template` suffixed removed.
+    * Update the contents of all template files and rename them with the
+      `template` suffixed removed (overwrite the `README.md` and `LICENSE`
+      files).
 
 ------------------------------------------------------------------------------
 
