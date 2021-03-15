@@ -1,5 +1,5 @@
-Velexi Template: DVC Dataset Repository (v0.1.2)
-================================================
+DVC Dataset Repository Template (v0.1.2)
+========================================
 
 ___Authors___  
 Kevin T. Chu `<kevin@velexi.com>`
