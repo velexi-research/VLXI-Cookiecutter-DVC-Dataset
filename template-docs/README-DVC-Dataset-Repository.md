@@ -23,8 +23,6 @@ Table of Contents
 
     2.1. [Setting Up the Dataset Repository][#2.1]
 
-    2.2. [Example and Template Files][#2.2]
-
 3. [Usage][#3]
 
     3.1. [Conventions][#3.1]
@@ -63,10 +61,13 @@ managed by DVC. It encourages the following dataset management practices.
     bin/
     data/
     template-docs/
+    template-docs/examples
 
-* `README.md`: this file (same as `template-docs/README-Template-Usage.md`)
+* `README.md`: this file (same as `README-DVC-Dataset-Repository.md` in the
+  `template-docs` directory)
 
-* `LICENSE`: license file for this repository template
+* `LICENSE`: license file for this repository template (same as
+  `LICENSE-DVC-Dataset-Repository` in the `template-docs` directory)
 
 * `VERSION`: symbolic link to `data/VERSION` file that is intended to contain
   the dataset version
@@ -77,8 +78,15 @@ managed by DVC. It encourages the following dataset management practices.
 
 * `data`: directory where dataset should be placed
 
-* `template-docs`: directory containing documentation (including a copy of
-  this file) and examples for this repository template
+* `template-docs`: directory containing documentation for this repository
+  template
+
+* `template-docs/examples`: directory containing example and template files
+
+  * Example and template files are indicated by the `example` and `template`
+    suffixes, respectively. These files are intended to simplify the set up of
+    package. When appropriate, they should be renamed (with the `example` or
+    `template` suffix removed).
 
 ### 1.2. Software Dependencies
 
@@ -98,7 +106,7 @@ managed by DVC. It encourages the following dataset management practices.
 ### 1.3. License
 
 The contents of this directory are covered under the LICENSE contained in the
-top-level directory of this repository.
+root directory of this repository.
 
 ### 1.4. Supported DVC Remote Storage Providers
 
@@ -116,12 +124,8 @@ top-level directory of this repository.
 
 2. (OPTIONAL) Set up a Python virtual environment for the dataset repository.
 
-    * Copy `template-docs/examples/envrc.example` to the top-level directory
-      and rename it to `.envrc`.
-
-      ```
-      $ cp template-docs/examples/envrc.example .envrc
-      ```
+    * Copy `template-docs/examples/envrc.example` to the root directory of the
+      dataset repository and rename it to `.envrc`.
 
     * Follow `direnv` instructions to enable `.envrc` file.
 
@@ -134,8 +138,8 @@ top-level directory of this repository.
 
 4. Initialize the dataset repository.
 
-    * Copy `template-docs/examples/config.yaml.example` to the top-level
-      directory and rename it to `config.yaml`.
+    * Copy `template-docs/examples/config.yaml.example` to the root directory
+      of the dataset repository and rename it to `config.yaml`.
 
     * Set the parameters for the dataset repository in `config.yaml`.
 
@@ -153,14 +157,7 @@ top-level directory of this repository.
       ```
 
 5. Replace the `README.md` and `LICENSE` files with dataset-specific versions.
-   Examples are available in the `template-docs/examples` directory.
-
-### 2.2. Example and Template Files
-
-Example and template files are indicated by the "example" and "template"
-suffixes, respectively. These files are intended to simplify the set up of
-the data repository. When appropriate, they should be renamed (with the
-"example" or "template" suffix removed).
+   Templates are available in the `template-docs/examples` directory.
 
 ------------------------------------------------------------------------------
 
@@ -377,7 +374,6 @@ In the example command above, the following substitutions should be made:
 
 [#2]: #2-getting-started
 [#2.1]: #21-setting-up-the-dataset-repository
-[#2.2]: #22-example-and-template-files
 
 [#3]: #3-usage
 [#3.1]: #31-conventions
