@@ -166,7 +166,7 @@ root directory of this repository.
       $ git commit requirements.txt -m "Add requirements.txt"
       ```
 
-5. Update the dataset repository's documentation.
+5. Update documentation files for the dataset repository.
 
     * Replace the `README.md` file `README.md.template` and update its
       contents.
