@@ -116,8 +116,8 @@ managed by DVC. It encourages the following dataset management practices.
 
 ### 1.3. License
 
-The contents of this directory are covered under the LICENSE contained in the
-root directory of this repository.
+The contents of this directory are covered under the LICENSE file contained in
+the root directory of this repository.
 
 ### 1.4. Supported DVC Remote Storage Providers
 
