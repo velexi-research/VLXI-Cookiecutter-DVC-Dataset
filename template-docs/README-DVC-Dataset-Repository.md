@@ -166,11 +166,9 @@ root directory of this repository.
       $ git commit requirements.txt -m "Add requirements.txt"
       ```
 
-5. Update documentation files for the dataset repository.
-
-    * Update the contents of all template files and rename them with the
-      `template` suffixed removed (overwrite the original `README.md` and
-      `LICENSE` files).
+5. Update the contents of all template files and rename them with the
+   `template` suffixed removed (overwrite the original `README.md` and
+   `LICENSE` files).
 
 ------------------------------------------------------------------------------
 
