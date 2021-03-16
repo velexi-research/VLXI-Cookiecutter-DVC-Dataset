@@ -16,11 +16,8 @@ SYNOPSIS
     $script_name [-h] [-q] CONFIG_FILE
 
 DESCRIPTION
-    $script_name TODO
-
-CONFIGURATION FILE PARAMETERS
-
-    - TODO
+    The $script_name utility initializes a DVC dataset repository using
+    parameters from CONFIG_FILE.
 
 ARGUMENTS
 
@@ -136,9 +133,10 @@ _EXIT_CODE_CONFIG_FILE_ERR_NO_STORAGE_NAME=-22
 _EXIT_CODE_CONFIG_FILE_ERR_NO_LOCAL_STORAGE_DIR=-30
 _EXIT_CODE_CONFIG_FILE_ERR_LOCAL_STORAGE_DIR_DOES_NOT_EXIST=-31
 _EXIT_CODE_CONFIG_FILE_ERR_NO_AWS_S3_BUCKET=-40
-_EXIT_CODE_CONFIG_FILE_ERR_INSTALL_DVC_FAILED=-50
-_EXIT_CODE_CONFIG_FILE_ERR_INITIALIZE_DVC_FAILED=-51
-_EXIT_CODE_CONFIG_FILE_ERR_ADD_REMOTE_STORAGE_FAILED=-52
+_EXIT_CODE_ERR_INSTALL_DVC_FAILED=-50
+_EXIT_CODE_ERR_INITIALIZE_DVC_FAILED=-51
+_EXIT_CODE_ERR_ADD_REMOTE_STORAGE_FAILED=-52
+_EXIT_CODE_ERR_TRANSFER_DATA_TRACKING_TO_DVC=-53
 
 # Configuration validation
 _VALID_STORAGE_PROVIDERS="local aws"
@@ -287,11 +285,11 @@ fi
 # Preparations
 #-----------------------------------------------------------------------------
 
-# Find top-level dev-ops directory
-top_dir=$(cd $(dirname $(dirname ${BASH_SOURCE[0]})); pwd)
+# Find root directory of dataset repository
+root_dir=$(cd $(dirname $(dirname ${BASH_SOURCE[0]})); pwd)
 
 # Change to the top directory
-cd $top_dir
+cd $root_dir
 
 # --- Install DVC
 
@@ -318,7 +316,7 @@ pip_install_status=$(run_cmd $_ERR_FILE $cmd)
 
 if [ $cat_requirements_status -ne 0 -o $pip_install_status -ne 0 ]; then
     echo "ERROR: Failed to install DVC. For details, see '$_ERR_FILE'" >&2
-    exit $_EXIT_CODE_CONFIG_FILE_ERR_INSTALL_DVC_FAILED
+    exit $_EXIT_CODE_ERR_INSTALL_DVC_FAILED
 else
     rm -f $_ERR_FILE
 
@@ -349,7 +347,7 @@ git_commit_status=$(run_cmd $_ERR_FILE $cmd)
 
 if [ $dvc_init_status -ne 0 -o $git_commit_status -ne 0 ]; then
     echo "ERROR: Failed to initialize DVC. For details, see '$_ERR_FILE'" >&2
-    exit $_EXIT_CODE_CONFIG_FILE_ERR_INITIALIZE_DVC_FAILED
+    exit $_EXIT_CODE_ERR_INITIALIZE_DVC_FAILED
 else
     rm -f $_ERR_FILE
 
@@ -385,7 +383,7 @@ git_commit_status=$(run_cmd $_ERR_FILE $cmd)
 
 if [ $dvc_remote_add_status -ne 0 -o $git_add_status -ne 0 -o $git_commit_status -ne 0 ]; then
     echo "ERROR: Failed to add remote storage. For details, see '$_ERR_FILE'" >&2
-    exit $_EXIT_CODE_CONFIG_FILE_ERR_ADD_REMOTE_STORAGE_FAILED
+    exit $_EXIT_CODE_ERR_ADD_REMOTE_STORAGE_FAILED
 else
     rm -f $_ERR_FILE
 
@@ -421,7 +419,7 @@ git_commit_status=$(run_cmd $_ERR_FILE $cmd)
 if [ $git_rm_status -ne 0 -o $dvc_add_status -ne 0 -o $git_add_status -ne 0 -o $git_commit_status -ne 0 ]; then
     echo "ERROR: Failed to transfer tracking of '$_DATA_DIR' directory to DVC." >&2
     echo "For details, see '$_ERR_FILE'" >&2
-    exit $_EXIT_CODE_CONFIG_FILE_ERR_ADD_REMOTE_STORAGE_FAILED
+    exit $_EXIT_CODE_ERR_TRANSFER_DATA_TRACKING_TO_DVC
 else
     rm -f $_ERR_FILE
 
