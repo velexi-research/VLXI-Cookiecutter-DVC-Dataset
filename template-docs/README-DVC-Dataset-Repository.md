@@ -84,10 +84,11 @@ managed by DVC. It encourages the following dataset management practices.
 
 * `*.template`: template files for the dataset repository
 
-    * Template files are indicated by `template` suffix and contain template
-      parameters denoted by double braces (e.g. `{{ PKG_NAME }}`). Template
-      files are intended to simplify the set up of the dataset repository.
-      When used, they should be renamed to remove the `template` suffix.
+    * Template files are indicated by the `template` suffix and contain
+      template parameters denoted by double braces (e.g. `{{ PKG_NAME }}`).
+      Template files are intended to simplify the set up of the dataset
+      repository. When used, they should be renamed to remove the `template`
+      suffix.
 
 * `bin`: directory where scripts and programs for maintaining the dataset
   (e.g., scripts to download data from public websites, scripts to clean up
