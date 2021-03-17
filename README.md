@@ -170,7 +170,7 @@ in the `template-docs` and root directories of this repository.
 
 5. Rename all of the template files with the `template` suffix removed
    (overwrite the original `README.md` and `LICENSE` files) and replace all
-   template parameters with package-appropriate values.
+   template parameters with dataset-appropriate values.
 
 ------------------------------------------------------------------------------
 
