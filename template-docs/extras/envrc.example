@@ -5,11 +5,11 @@
 # --- Project-Specific Configuration Parameters
 
 # Paths to add to PATH
-# NOTE: paths should be specified relative to top-level of project directory.
+# NOTE: paths should be specified relative to the project root directory.
 PATH_EXTRA=
 
 # Paths to add to PYTHONPATH
-# NOTE: paths should be specified relative to top-level of project directory.
+# NOTE: paths should be specified relative to the project root directory.
 PYTHONPATH_EXTRA=
 
 # ====================== DO NOT EDIT BELOW ====================== #
@@ -20,23 +20,23 @@ layout_python3
 
 # --- Configure environment
 
-# Find top-level directory
+# Find project root directory
 #
 # Note: "builtin cd" is used to avoid conflicts with other packages
 #       (e.g., autoenv)
-TOP_DIR=`builtin cd $(dirname "${BASH_SOURCE[0]}") && pwd`
+PROJECT_ROOT_DIR=`builtin cd $(dirname "${BASH_SOURCE[0]}") && pwd`
 
 # Set PATH
 PATH_EXTRA="bin $PATH_EXTRA"
 for DIR in $PATH_EXTRA; do
-    PATH_add $TOP_DIR/$DIR
+    PATH_add $PROJECT_ROOT_DIR/$DIR
 done
 
 # Python configuration
-export PYTHONPATH=$TOP_DIR
+export PYTHONPATH=$PROJECT_ROOT_DIR
 for DIR in $PYTHONPATH_EXTRA; do
-    path_add PYTHONPATH $TOP_DIR/$DIR
+    path_add PYTHONPATH $PROJECT_ROOT_DIR/$DIR
 done
 
 # Data directory
-export DATA_DIR=$TOP_DIR/data
+export DATA_DIR=$PROJECT_ROOT_DIR/data
