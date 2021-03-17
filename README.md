@@ -167,9 +167,9 @@ in the `template-docs` and root directories of this repository.
       $ git commit requirements.txt -m "Add requirements.txt"
       ```
 
-5. Update the contents of all template files and rename them with the
-   `template` suffixed removed (overwrite the original `README.md` and
-   `LICENSE` files).
+5. Rename all of the template files with the `template` suffix removed
+   (overwrite the original `README.md` and `LICENSE` files) and replace all
+   template parameters with package-appropriate values.
 
 ------------------------------------------------------------------------------
 
