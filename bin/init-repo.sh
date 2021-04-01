@@ -202,7 +202,7 @@ if [ $# -lt 1 ]; then
     exit $_EXIT_CODE_ERR_MISSING_CONFIG_FILE_ARG
 fi
 if [ $# -gt 1 ]; then
-    echo "WARNING: more than arguments found.  Ignoring all but first one."
+    echo "WARNING: extra arguments provided ... ignoring them."
 fi
 config_file=$1
 
