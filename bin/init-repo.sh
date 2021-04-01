@@ -204,6 +204,7 @@ fi
 if [ $# -gt 1 ]; then
     echo "WARNING: extra arguments found ... ignoring them."
 fi
+
 config_file=$1
 
 # Check command-line arguments
