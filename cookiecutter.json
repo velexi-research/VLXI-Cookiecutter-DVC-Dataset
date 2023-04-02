@@ -1,0 +1,19 @@
+{
+  "dataset_name": "dataset-name",
+  "author": "Your Name",
+  "email": "{{ cookiecutter.author | slugify(separator='.') }}@example.com",
+  "dataset_license": ["CC-BY-4.0 license", "None"],
+  "software_license": [
+    "Apache License 2.0",
+    "BSD-3-Clause License",
+    "MIT License",
+    "None"
+  ],
+  "dvc_remote_storage_provider": [
+    "aws",
+    "local",
+    "None"
+  ],
+  "includes_third_party_data": ["no", "yes"],
+  "python_version": "^3.8"
+}
