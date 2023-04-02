@@ -125,7 +125,7 @@ Table of Contents
        For commands to use other Python executables for the virtual environment,
        see the [Poetry Quick Reference][poetry-quick-reference].
 
-4. Install the Python package dependencies (e.g., DVC and FastDS).
+4. Install the Python package dependencies (e.g., pre-commit, DVC, FastDS).
 
    ```shell
    $ poetry install
