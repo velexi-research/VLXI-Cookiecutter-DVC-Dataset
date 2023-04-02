@@ -1,8 +1,8 @@
-Velexi DVC Dataset Cookiecutter
+Velexi Dataset Cookiecutter
 ===============================
 
-The [Velexi DVC Dataset Cookiecutter][vlxi-cookiecutter-dvc-dataset] is intended
-to streamline the process of creating a dataset that
+The [Velexi Dataset Cookiecutter][vlxi-cookiecutter-dataset] is intended to
+streamline the process of creating a dataset that
 
 * encourages data version management and
 
@@ -81,7 +81,7 @@ Table of Contents
 2. Use `cookiecutter` to create a new Python project.
 
    ```shell
-   $ cookiecutter https://github.com/velexi-research/VLXI-Cookiecutter-DVC-Dataset.git
+   $ cookiecutter https://github.com/velexi-research/VLXI-Cookiecutter-Dataset.git
    ```
 
 3. Set up dedicated virtual environment for the project. Any of the common
@@ -279,7 +279,7 @@ template.
   cookiecutter development.
 
   ```shell
-  $ git clone git@github.com:velexi-research/VLXI-Cookiecutter-DVC-Dataset.git
+  $ git clone git@github.com:velexi-research/VLXI-Cookiecutter-Dataset.git
   ```
 
 * Use `cookiecutter` from the local cookiecutter Git repository to create a
@@ -356,7 +356,7 @@ template.
 
 [poetry-quick-reference]: {{cookiecutter.dataset_name}}/extras/references/Poetry-Quick-Reference.md
 
-[vlxi-cookiecutter-dvc-dataset]: https://github.com/velexi-research/VLXI-Cookiecutter-DVC-Dataset
+[vlxi-cookiecutter-dataset]: https://github.com/velexi-research/VLXI-Cookiecutter-Dataset
 
 [-----------------------------EXTERNAL LINKS-----------------------------]: #
 
