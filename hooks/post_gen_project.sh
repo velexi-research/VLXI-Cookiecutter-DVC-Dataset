@@ -62,8 +62,7 @@ source $(poetry env info --path)/bin/activate
 
 echo "Initialize Git repository..."
 git init
-# TODO: Add all non-data files
-git add poetry.lock
+git add .
 git commit -m "Initial commit."
 
 # --- Initialize DVC
