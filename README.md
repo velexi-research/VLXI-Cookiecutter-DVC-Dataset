@@ -364,6 +364,8 @@ template.
 
 [direnv]: https://direnv.net/
 
+[fastds]: https://github.com/DAGsHub/fds
+
 [git]: https://git-scm.com/
 
 [poetry]: https://python-poetry.org/
