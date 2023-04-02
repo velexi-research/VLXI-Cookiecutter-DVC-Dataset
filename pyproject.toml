@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "Velexi DVC Dataset Cookiecutter"
+name = "Velexi Dataset Cookiecutter"
 version = "0.2.0"
 description = "Template for DVC datasets"
 authors = ["Kevin Chu <kevin@velexi.com>"]
