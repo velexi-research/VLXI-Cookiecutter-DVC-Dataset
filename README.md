@@ -25,9 +25,7 @@ Table of Contents
 
    1.1 [Cookiecutter Parameters][#1.1]
 
-   1.2 [Setting Up a New Project][#1.2]
-
-   1.3 [Publishing Package Documentation to GitHub Pages][#1.3]
+   1.2 [Setting Up a New Dataset][#1.2]
 
 2. [Contributor Notes][#2]
 
@@ -63,7 +61,7 @@ Table of Contents
   "[Dependency sepcification][poetry-dependency-specification]" section
   of the Poetry documentation for version specifier semantics.
 
-### 1.2. Setting Up a New Project
+### 1.2. Setting Up a New Dataset
 
 1. ___Prerequisites___
 
@@ -343,8 +341,7 @@ template.
 
 [#1]: #1-usage
 [#1.1]: #11-cookiecutter-parameters
-[#1.2]: #12-setting-up-a-new-project
-[#1.3]: #13-publishing-package-documentation-to-github-pages
+[#1.2]: #12-setting-up-a-new-dataset
 
 [#2]: #2-contributor-notes
 [#2.1]: #21-license
