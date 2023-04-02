@@ -45,9 +45,9 @@ Brief description of the dataset.
 ├── README.md          <- this file
 ├── RELEASE-NOTES.md   <- dataset release notes
 ├── DATASET-LICENSE    <- license for data components of the dataset
-├── DATASET-NOTICE     <- copyright notices for third-party data included in
+├{% if cookiecutter.includes_third_party_data == "yes" %}── DATASET-NOTICE     <- copyright notices for third-party data included in
 │                         the dataset
-├── SOFTWARE-LICENSE   <- license for software components of the dataset
+├{% endif %}── SOFTWARE-LICENSE   <- license for software components of the dataset
 ├{% if cookiecutter.software_license == "Apache License 2.0" %}── SOFTWARE-NOTICE    <- copyright notice for the software components of the
 │                         dataset
 ├{% endif %}── Makefile           <- Makefile containing useful shortcuts (`make` rules).
@@ -68,8 +68,8 @@ TODO
 {% if cookiecutter.dataset_license == "CC-BY-4.0 license" %}
 The data components in this dataset is covered under the Creative Commons
 Attribution 4.0 International Public License (included in the `DATASET-LICENSE`
-file). {% endif %}Licenses for third-party data included in this dataset are
-contained in the `DATASET-NOTICE` file.
+file). {% endif %}{% if cookiecutter.includes_third_party_data == "yes" %}Licenses for third-party data included in this dataset are contained in
+the `DATASET-NOTICE` file.{% endif %}
 {% if cookiecutter.software_license == "Apache License 2.0" %}
 The software components of this repository are covered under the Apache License
 2.0 (included in the `SOFTWARE-LICENSE` file). The copyright for the software
