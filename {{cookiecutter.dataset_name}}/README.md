@@ -326,6 +326,10 @@ In the example command above, the following substitutions should be made:
 
 * [FastDS][fastds]
 
+* [FastDS Quick Reference][fastds-quick-reference]
+
+* [Poetry Quick Reference][poetry-quick-reference]
+
 ------------------------------------------------------------------------------
 
 [-----------------------------INTERNAL LINKS-----------------------------]: #
@@ -349,6 +353,12 @@ In the example command above, the following substitutions should be made:
 [#4]: #4-known-issues
 
 [#5]: #5-references
+
+[---------------------------- REPOSITORY LINKS ----------------------------]: #
+
+[fastds-quick-reference]: extras/quick-references/FastDS-Quick-Reference.md
+
+[poetry-quick-reference]: extras/quick-references/Poetry-Quick-Reference.md
 
 [-----------------------------EXTERNAL LINKS-----------------------------]: #
 
