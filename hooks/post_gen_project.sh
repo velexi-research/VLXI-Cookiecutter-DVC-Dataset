@@ -46,10 +46,10 @@ echo "--------------------------------------"
 echo
 
 # Install DVC
-if [ "$dvc_remote_storage_provider" = "local" ]; then
-    poetry add dvc
-elif [ "$dvc_remote_storage_provider" = "aws" ]; then
+if [ "$dvc_remote_storage_provider" = "aws" ]; then
     poetry add dvc[s3]
+else
+    poetry add dvc
 fi
 
 # Install FastDS
