@@ -61,7 +61,7 @@ Brief description of the dataset.
 ├── poetry.lock        <- Poetry lockfile
 ├── bin/               <- scripts and programs for managing the dataset
 ├── data/              <- directory containing data for dataset
-│   ├── VERSION        <- version of the latest official release of the dataset
+│   └── VERSION        <- version of the latest official release of the dataset
 ├── docs/              <- dataset documentation
 └── extras/            <- additional files and references that may be useful
                           for dataset maintenance
