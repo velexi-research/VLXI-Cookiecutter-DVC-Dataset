@@ -185,8 +185,7 @@ import the dataset after initializing DVC in the working directory.
      * `/LOCAL/PATH` should be replaced by the local path relative to
        `/PATH/TO/DATA` where the dataset should be placed.
 
-    For example, if a dataset repository based on this template repository is
-    located at
+    For example, if the dataset repository is located at
 
     `https://github.com/account/cool-dataset`
 
