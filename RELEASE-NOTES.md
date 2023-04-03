@@ -1,16 +1,23 @@
-DVC Dataset Repository Template Release Notes
-=============================================
+Velexi Dataset Cookiecutter Release Notes
+=========================================
 -------------------------------------------------------------------------------
-Release Notes: v0.1.1 (2021-03-15)
-==================================
+0.2.0 (2023-04-02)
+==================
+### Cookiecutter Template Enhancements
+* Restructure project to be a cookiecutter instead of a GitHub template
+  repository.
+
+-------------------------------------------------------------------------------
+0.1.1 (2021-03-15)
+==================
 * Fix bugs in `init-repo.sh` script.
 * Improve dataset versioning.
 * Reorganize directories and template files.
 * Improve documentation.
 
 -------------------------------------------------------------------------------
-Release Notes: v0.1.0 (2021-02-24)
-==================================
+v0.1.0 (2021-02-24)
+===================
 * Initial version of package. 
 
 -------------------------------------------------------------------------------
