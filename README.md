@@ -404,7 +404,7 @@ template.
 
 [---------------------------- REPOSITORY LINKS ----------------------------]: #
 
-[poetry-quick-reference]: {{cookiecutter.dataset_name}}/extras/references/Poetry-Quick-Reference.md
+[poetry-quick-reference]: {{cookiecutter.dataset_name}}/extras/quick-references/Poetry-Quick-Reference.md
 
 [vlxi-cookiecutter-dataset]: https://github.com/velexi-research/VLXI-Cookiecutter-Dataset
 
