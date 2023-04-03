@@ -27,7 +27,9 @@ streamline the process of a creating dataset that
 
 * Quick references for dataset maintenance tools (e.g., [FastDS][fastds])
 
-* Integration with data quality tools (e.g., [pre-commit][pre-commit])
+* Pre-configured to support development of Python software tools
+
+* Integration with code and data quality tools (e.g., [pre-commit][pre-commit])
 
 -------------------------------------------------------------------------------
 
