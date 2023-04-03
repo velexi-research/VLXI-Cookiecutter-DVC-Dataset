@@ -1,16 +1,29 @@
 Velexi Dataset Cookiecutter
-===============================
+===========================
+
+### ___Dataset = Data + Supporting Software Tools___
 
 The [Velexi Dataset Cookiecutter][vlxi-cookiecutter-dataset] is intended to
-streamline the process of creating a dataset that
+streamline the process of a creating dataset that
 
-* encourages data version management and
+* improves the reproducibility of research analysis (including machine learning
+  experiments, data science analysis, and traditional scientific and
+  engineering studies) by applying version control principles to datasets,
 
-* is distribution-ready.
+* facilitates efficient exploration of datasets by standardizing the directory
+  structure used to organize data,
+
+* increases reuse of datasets across projects by decoupling datasets from data
+  analysis code, and
+
+* simplifies dataset maintenance by keeping dataset management code (e.g.,
+  clean up scripts) with the dataset.
 
 ### Features
 
 * A simple, consistent dataset directory structure
+
+* Data version control (via [DVC][dvc] and [FastDS][fastds])
 
 * Quick references for dataset maintenance tools (e.g., [FastDS][fastds])
 
@@ -26,6 +39,10 @@ Table of Contents
    1.1 [Cookiecutter Parameters][#1.1]
 
    1.2 [Setting Up a New Dataset][#1.2]
+
+   1.3 [Dataset License Considerations][#1.3]
+
+   1.4. [Using an Unsupported DVC Remote Storage Provider][#1.4]
 
 2. [Contributor Notes][#2]
 
@@ -63,7 +80,7 @@ Table of Contents
 
 ### 1.2. Setting Up a New Dataset
 
-1. ___Prerequisites___
+1. Prerequisites
 
    * Install [Git][git].
 
@@ -71,7 +88,7 @@ Table of Contents
 
    * Install [Poetry][poetry] 1.2 (or greater).
 
-     __Note__. The dataset template uses `poetry` instead of `pip` for
+     ___Note___. The dataset template uses `poetry` instead of `pip` for
      management of Python package dependencies.
 
    * Install the [Cookiecutter][cookiecutter] Python package.
@@ -88,13 +105,13 @@ Table of Contents
    virtual environment options (e.g., `venv`, `direnv`, `conda`) should work.
    Below are instructions for setting up a `direnv` or `poetry` environment.
 
-   __Note__: to avoid conflicts between virtual environments, only one method
+   ___Note___: to avoid conflicts between virtual environments, only one method
    should be used to manage the virtual environment.
 
-   * __`direnv` Environment__. __Note__: `direnv` manages the environment for
+   * __`direnv` Environment__. _Note_: `direnv` manages the environment for
      both Python and the shell.
 
-     * ___Prerequisite___. Install `direnv`.
+     * Prerequisite. Install `direnv`.
 
      * Copy `extras/dot-envrc` to the project root directory, and rename it to
        `.envrc`.
@@ -110,7 +127,7 @@ Table of Contents
        $ direnv allow
        ```
 
-   * __`poetry` Environment__. __Note__: `poetry` only manages the Python
+   * __`poetry` Environment__. _Note_: `poetry` only manages the Python
      environment (it does not manage the shell environment).
 
      * Create a `poetry` environment that uses a specific Python executable.
@@ -133,7 +150,7 @@ Table of Contents
 
 5. Configure Git.
 
-   * Install the git pre-commit hooks.
+   * Install the Git pre-commit hooks.
 
      ```shell
      $ pre-commit install
@@ -177,16 +194,17 @@ Table of Contents
 
      where `DVC_REMOTE` is the URL of the remote storage for the dataset
      (e.g., the path to a directory on the local file system or the URL to
-     the S3 bucket). __Note__: if desired, the name "storage" can be
+     the S3 bucket). ___Note___: if desired, the name "storage" can be
      replaced by a different name.
 
 7. Finish setting up the new dataset.
 
    * Verify the copyright year and owner in the copyright notice.
 
-     __Note__. If the software is licensed under Apache License 2.0, the
-     software copyright notice is located in the `NOTICE` file. Otherwise,
-     the software copyright notice is located in the `LICENSE` file.
+     ___Note___. If the software components of the dataset are licensed under
+     Apache License 2.0, the software copyright notice is located in the
+     `NOTICE` file. Otherwise, the software copyright notice is located in the
+     `LICENSE` file.
 
    * Update the Python package dependencies to the latest available
      versions.
@@ -199,6 +217,32 @@ Table of Contents
 
    * Commit all updated files (e.g., `poetry.lock`) to the dataset Git
      repository.
+
+### 1.3. Dataset License Considerations
+
+When the dataset includes data from third-party sources, be sure to include
+a reference to the source and license information (if available) in the
+`DATASET-NOTICE` file.
+
+### 1.4. Using an Unsupported DVC Remote Storage Provider
+
+The cookiecutter currently only supports two DVC remote storage providers:
+(1) AWS S3 and (2) the local file system. To use one of the other remote
+storage providers supported by DVC, use the following steps.
+
+* Select `None` when `cookiecutter` prompts you for the
+  `dvc_remote_storage_provider`.
+
+* Add the optional dependencies of the `dvc` Python package that are required
+  for the DVC remote storage type. For instance, to install the packages for
+  supporting Microsoft Azure, use
+
+  ```shell
+  $ poetry add dvc[azure]
+  ```
+
+* Follow Step #6 from [Section #1.2][#1.2] using your choice of DVC remote
+  storage.
 
 ------------------------------------------------------------------------------
 
@@ -235,8 +279,8 @@ contained in the `NOTICE` file.
 #### Base Requirements
 
 * [Git][git]
-* [Python][python] (>=3.7.2)
-* [Poetry][poetry]
+* [Python][python] (>=3.9)
+* [Poetry][poetry] (>=1.2)
 
 #### Optional Packages
 
@@ -257,7 +301,7 @@ See `[tool.poetry.dependencies]` section of [`pyproject.toml`](pyproject.toml).
    ```shell
    $ poetry install
 
-3. Install the git pre-commit hooks.
+3. Install the Git pre-commit hooks.
 
    ```shell
    $ pre-commit install
@@ -333,6 +377,8 @@ template.
 
 ## 3. Documentation
 
+* [DVC Documentation][dvc-docs]
+
 * [Poetry Quick Reference][poetry-quick-reference]
 
 ------------------------------------------------------------------------------
@@ -342,6 +388,8 @@ template.
 [#1]: #1-usage
 [#1.1]: #11-cookiecutter-parameters
 [#1.2]: #12-setting-up-a-new-dataset
+[#1.3]: #13-dataset-license-considerations
+[#1.4]: #14-using-an-unsupported-dvc-remote-storage-provider
 
 [#2]: #2-contributor-notes
 [#2.1]: #21-license
@@ -363,6 +411,10 @@ template.
 [cookiecutter]: https://cookiecutter.readthedocs.io/en/latest/
 
 [direnv]: https://direnv.net/
+
+[dvc]: https://dvc.org/
+
+[dvc-docs]: https://dvc.org/doc
 
 [fastds]: https://github.com/DAGsHub/fds
 
