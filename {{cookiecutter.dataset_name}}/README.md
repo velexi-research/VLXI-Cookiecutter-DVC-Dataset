@@ -110,7 +110,7 @@ Brief description of the dataset.
 {% if cookiecutter.dataset_license == "CC-BY-4.0 license" %}
 The data components in this dataset is covered under the Creative Commons
 Attribution 4.0 International Public License (included in the `DATASET-LICENSE`
-file). {% endif %}{% if cookiecutter.includes_third_party_data == "yes" %}Licenses for third-party data included in this dataset are contained in
+file).{% endif %}{% if cookiecutter.includes_third_party_data == "yes" %} Licenses for third-party data included in this dataset are contained in
 the `DATASET-NOTICE` file.{% endif %}
 {% if cookiecutter.software_license == "Apache License 2.0" %}
 The software components of this repository are covered under the Apache License
