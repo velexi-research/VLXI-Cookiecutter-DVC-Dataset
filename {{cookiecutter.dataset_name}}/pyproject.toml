@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "{{ cookiecutter.dataset_name }}"
+version = "0.1.0"
+description = ""
+license = "{% if cookiecutter.software_license == 'Apache License 2.0' %}Apache-2.0{% elif cookiecutter.software_license == 'BSD-3-Clause License' %}BSD-3-Clause{% elif cookiecutter.software_license == 'MIT License' %}MIT{% endif %}"
+readme = "README.md"
+authors = ["{{ cookiecutter.author }} <{{ cookiecutter.email }}>"]
+
+[tool.poetry.dependencies]
+python = "{{ cookiecutter.python_version }}"
+pre-commit = "^3.2.1"
+black = "^23.3.0"
+flake8 = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

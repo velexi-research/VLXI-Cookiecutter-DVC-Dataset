@@ -1,405 +1,431 @@
-DVC Dataset Repository Template (v0.1.2)
-========================================
+Velexi Dataset Cookiecutter
+===========================
 
-___Authors___  
-Kevin T. Chu `<kevin@velexi.com>`
+### ___Dataset = Data + Supporting Software Tools___
 
-------------------------------------------------------------------------------
+The [Velexi Dataset Cookiecutter][vlxi-cookiecutter-dataset] is intended to
+streamline the process of a creating dataset that
+
+* improves the reproducibility of research analysis (including machine learning
+  experiments, data science analysis, and traditional scientific and
+  engineering studies) by applying version control principles to datasets,
+
+* facilitates efficient exploration of datasets by standardizing the directory
+  structure used to organize data,
+
+* increases reuse of datasets across projects by decoupling datasets from data
+  analysis code, and
+
+* simplifies dataset maintenance by keeping dataset management code (e.g.,
+  clean up scripts) with the dataset.
+
+### Features
+
+* A simple, consistent dataset directory structure
+
+* Data version control (via [DVC][dvc] and [FastDS][fastds])
+
+* Quick references for dataset maintenance tools (e.g., [FastDS][fastds])
+
+* Pre-configured to support development of Python software tools
+
+* Integration with code and data quality tools (e.g., [pre-commit][pre-commit])
+
+-------------------------------------------------------------------------------
 
 Table of Contents
 -----------------
 
-1. [Overview][#1]
+1. [Usage][#1]
 
-    1.1. [Package Contents][#1.1]
+   1.1 [Cookiecutter Parameters][#1.1]
 
-    1.2. [Software Dependencies][#1.2]
+   1.2 [Setting Up a New Dataset][#1.2]
 
-    1.3. [License][#1.3]
+   1.3 [Dataset License Considerations][#1.3]
 
-    1.4. [Supported DVC Remote Storage Providers][#1.4]
+   1.4. [Using an Unsupported DVC Remote Storage Provider][#1.4]
 
-2. [Getting Started][#2]
+2. [Contributor Notes][#2]
 
-    2.1. [Setting Up the Dataset Repository][#2.1]
+   2.1. [License][#2.1]
 
-3. [Usage][#3]
+   2.2. [Repository Contents][#2.2]
 
-    3.1. [Conventions][#3.1]
+   2.3. [Software Requirements][#2.3]
 
-    3.2. [Managing Datasets][#3.2]
+   2.4. [Setting Up to Develop the Cookiecutter][#2.4]
 
-    3.3. [Using Datasets][#3.3]
+   2.5. [Additional Notes][#2.5]
 
-4. [References][#4]
+3. [Documentation][#3]
 
 ------------------------------------------------------------------------------
 
-## 1. Overview
+## 1. Usage
 
-This repository is intended to serve as a template for dataset repositories
-managed by DVC. It encourages the following dataset management practices.
+### 1.1. Cookiecutter Parameters
 
-* Improve the reproducibility of research analysis (including machine learning
-  experiments, data science analysis, and traditional scientific and
-  engineering studies) by applying version control principles to datasets.
+* `dataset_name`: dataset nname
 
-* Facilitate efficient exploration of datasets by standardizing the directory
-  structure used to organize data.
+* `author`: dataset's primary author (or maintainer)
 
-* Increase reuse of datasets across projects by decoupling datasets from data
-  analysis code.
+* `email`: : primary author's (or maintainer's) email
 
-* Simplify dataset maintenance by keeping the dataset management code
-  (e.g., clean up scripts) with the dataset.
+* `dataset_license`: type of license to use for the dataset
 
-### 1.1. Package Contents
+* `software_license`: type of license to use for supporting software
 
-    README.md
-    LICENSE
-    VERSION
-    config.yaml.template
-    README.md.template
-    RELEASE-NOTES.md.template
-    LICENSE.template
-    LICENSE-DATASET.template
-    bin/
-    data/
-    template-docs/
-    template-docs/extras
+* `python_version`: Python versions compatible with project. See the
+  "[Dependency sepcification][poetry-dependency-specification]" section
+  of the Poetry documentation for version specifier semantics.
 
-* `README.md`: this file (same as `README-DVC-Dataset-Repository.md` in the
-  `template-docs` directory)
+### 1.2. Setting Up a New Dataset
 
-* `LICENSE`: license file for this dataset repository template (same as
-  `LICENSE-DVC-Dataset-Repository.md` in the `template-docs` directory)
+1. Prerequisites
 
-* `VERSION`: symbolic link to `data/VERSION` file that is intended to contain
-  the dataset version
+   * Install [Git][git].
 
-* `config.yaml.template`: template configuration for the dataset repository
+   * Install [Python][python] 3.9 (or greater).
 
-    * The `template-docs/extras` directory contains an extra copy of
-      `config.yaml.template` in case the original copy is accidentally lost.
+   * Install [Poetry][poetry] 1.2 (or greater).
 
-* `*.template`: template files for the dataset repository
+     ___Note___. The dataset template uses `poetry` instead of `pip` for
+     management of Python package dependencies.
 
-    * Template files are indicated by `template` suffix. These files are
-      intended to simplify the set up of the dataset repository. They should
-      be renamed to remove the `template` suffix.
+   * Install the [Cookiecutter][cookiecutter] Python package.
 
-* `bin`: directory where scripts and programs for maintaining the dataset
-  (e.g., scripts to download data from public websites, scripts to clean up
-  data) should be placed
+   * _Optional_. Install [direnv][direnv].
 
-* `data`: directory where dataset should be placed
+2. Use `cookiecutter` to create a new Python project.
 
-* `template-docs`: directory containing documentation for this repository
-  template
+   ```shell
+   $ cookiecutter https://github.com/velexi-research/VLXI-Cookiecutter-Dataset.git
+   ```
 
-* `template-docs/extras`: directory containing example and template files
+3. Set up dedicated virtual environment for the project. Any of the common
+   virtual environment options (e.g., `venv`, `direnv`, `conda`) should work.
+   Below are instructions for setting up a `direnv` or `poetry` environment.
 
-### 1.2. Software Dependencies
+   ___Note___: to avoid conflicts between virtual environments, only one method
+   should be used to manage the virtual environment.
+
+   * __`direnv` Environment__. _Note_: `direnv` manages the environment for
+     both Python and the shell.
+
+     * Prerequisite. Install `direnv`.
+
+     * Copy `extras/dot-envrc` to the project root directory, and rename it to
+       `.envrc`.
+
+       ```shell
+       $ cd $PROJECT_ROOT_DIR
+       $ cp extras/dot-envrc .envrc
+       ```
+
+     * Grant permission to direnv to execute the .envrc file.
+
+       ```shell
+       $ direnv allow
+       ```
+
+   * __`poetry` Environment__. _Note_: `poetry` only manages the Python
+     environment (it does not manage the shell environment).
+
+     * Create a `poetry` environment that uses a specific Python executable.
+       For instance, if `python3` is on your `PATH`, the following command
+       creates (or activates if it already exists) a Python virtual environment
+       that uses `python3` for the project.
+
+       ```shell
+       $ poetry env use python3
+       ```
+
+       For commands to use other Python executables for the virtual environment,
+       see the [Poetry Quick Reference][poetry-quick-reference].
+
+4. Install the Python package dependencies (e.g., pre-commit, DVC, FastDS).
+
+   ```shell
+   $ poetry install
+   ```
+
+5. Configure Git.
+
+   * Install the Git pre-commit hooks.
+
+     ```shell
+     $ pre-commit install
+     ```
+
+   * _Optional_. Set up a remote Git repository (e.g., GitHub repository).
+
+     * Create a remote Git repository.
+
+     * Configure the remote Git repository.
+
+       ```shell
+       $ git remote add origin GIT_REMOTE
+       ```
+
+       where `GIT_REMOTE` is the URL of the remote Git repository.
+
+     * Push the `main` branch to the remote Git repository.
+
+       ```shell
+       $ git checkout main
+       $ git push -u origin main
+       ```
+
+6. _Optional_ Configure remote storage for DVC (e.g., an AWS S3 bucket).
+
+   * Create remote storage for the dataset. Below are instructions for setting
+     up a storage on the local file system or AWS S3.
+
+     * __Local File System__. Create a directory that DVC can use to store a
+       copy of the dataset (outside of the working dataset directory).
+
+     * __AWS S3__. Create an S3 bucket that DVC can use for remote storage.
+
+   * Configure the remote DVC storage for the dataset.
+
+     ```shell
+     $ dvc remote add -d storage DVC_REMOTE
+     $ fds commit "Add DVC remote storage."
+     ```
+
+     where `DVC_REMOTE` is the URL of the remote storage for the dataset
+     (e.g., the path to a directory on the local file system or the URL to
+     the S3 bucket). ___Note___: if desired, the name "storage" can be
+     replaced by a different name.
+
+7. Finish setting up the new dataset.
+
+   * Verify the copyright year and owner in the copyright notice.
+
+     ___Note___. If the software components of the dataset are licensed under
+     Apache License 2.0, the software copyright notice is located in the
+     `NOTICE` file. Otherwise, the software copyright notice is located in the
+     `LICENSE` file.
+
+   * Update the Python package dependencies to the latest available
+     versions.
+
+     ```shell
+     $ poetry update
+     ```
+
+   * Customize the `README.md` file to reflect the specifics of the dataset.
+
+   * Commit all updated files (e.g., `poetry.lock`) to the dataset Git
+     repository.
+
+### 1.3. Dataset License Considerations
+
+When the dataset includes data from third-party sources, be sure to include
+a reference to the source and license information (if available) in the
+`DATASET-NOTICE` file.
+
+### 1.4. Using an Unsupported DVC Remote Storage Provider
+
+The cookiecutter currently only supports two DVC remote storage providers:
+(1) AWS S3 and (2) the local file system. To use one of the other remote
+storage providers supported by DVC, use the following steps.
+
+* Select `None` when `cookiecutter` prompts you for the
+  `dvc_remote_storage_provider`.
+
+* Add the optional dependencies of the `dvc` Python package that are required
+  for the DVC remote storage type. For instance, to install the packages for
+  supporting Microsoft Azure, use
+
+  ```shell
+  $ poetry add dvc[azure]
+  ```
+
+* Follow Step #6 from [Section #1.2][#1.2] using your choice of DVC remote
+  storage.
+
+------------------------------------------------------------------------------
+
+## 2. Contributor Notes
+
+### 2.1. License
+
+The contents of this cookiecutter are covered under the Apache License 2.0
+(included in the `LICENSE` file). The copyright for this cookiecutter is
+contained in the `NOTICE` file.
+
+### 2.2. Repository Contents
+
+```
+├── README.md               <- this file
+├── RELEASE-NOTES.md        <- cookiecutter release notes
+├── LICENSE                 <- cookiecutter license
+├── NOTICE                  <- cookiecutter copyright notice
+├── cookiecutter.json       <- cookiecutter configuration file
+├── pyproject.toml          <- Python project metadata file for cookiecutter
+│                              development
+├── poetry.lock             <- Poetry lockfile
+├── docs/                   <- cookiecutter documentation
+├── extras/                 <- additional files that may be useful for
+│                              cookiecutter development
+├── hooks/                  <- cookiecutter scripts that run before and/or
+│                              after project generation
+├── spikes/                 <- experimental code
+└── {{cookiecutter.name}}/  <- cookiecutter template
+```
+
+### 2.3. Software Requirements
 
 #### Base Requirements
 
-* Python (>=3.9)
-    * `pip`
-* `git`
-* `awk`
-* `sed`
+* [Git][git]
+* [Python][python] (>=3.9)
+* [Poetry][poetry] (>=1.2)
 
-#### Optional Software
+#### Optional Packages
 
-* `direnv`: only needed if using `direnv` to manage the Python virtual
-  environment for the dataset repository.
+* [direnv][direnv]
 
-### 1.3. License
+#### Python Packages
 
-The contents of this directory are covered under the LICENSE file contained in
-the root directory of this repository.
+See `[tool.poetry.dependencies]` section of [`pyproject.toml`](pyproject.toml).
 
-### 1.4. Supported DVC Remote Storage Providers
+### 2.4. Setting Up to Develop the Cookiecutter
 
-* Local file system
+1. Set up a dedicated virtual environment for cookiecutter development.
+   See Step 3 from [Section 2.1][#2.1] for instructions on how to set up
+   `direnv` and `poetry` environments.
 
-* Amazon S3
+2. Install the Python packages required for development.
+
+   ```shell
+   $ poetry install
+
+3. Install the Git pre-commit hooks.
+
+   ```shell
+   $ pre-commit install
+   ```
+
+4. Make the cookiecutter better!
+
+### 2.5. Additional Notes
+
+#### Updating Cookiecutter Template Dependencies
+
+To update the Python dependencies for the template (contained in the
+`{{cookiecutter.dataset_name}}` directory), use the following procedure to
+ensure that package dependencies for developing the non-template components
+of the cookiecutter do not interfere with package dependencies for the
+template.
+
+* Create a local clone of the cookiecutter Git repository to use for
+  cookiecutter development.
+
+  ```shell
+  $ git clone git@github.com:velexi-research/VLXI-Cookiecutter-Dataset.git
+  ```
+
+* Use `cookiecutter` from the local cookiecutter Git repository to create a
+  clean project for template dependency updates.
+
+  ```shell
+  $ cookiecutter PATH/TO/LOCAL/REPO
+  ```
+
+* In the pristine project, perform the following steps to update the template's
+  package dependencies.
+
+  * Set up a virtual environment for developing the template (e.g., a direnv
+    environment).
+
+  * Use `poetry` or manually edit `pyproject.toml` to (1) make changes to the
+    package dependency list and (2) update the package dependency versions.
+
+  * Use `poetry` to update the package dependencies and versions recorded in
+    the `poetry.lock` file.
+
+* Update `{{cookiecutter.dataset_name}}/pyproject.toml`.
+
+  * Copy `pyproject.toml` from the pristine project to
+    `{{cookiecutter.dataset_name}}/pyproject.toml`.
+
+  * Restore the templated values in the `[tool.poetry]` section to the
+    following:
+
+    <!-- {% raw %} -->
+    ```jinja
+    [tool.poetry]
+    name = "{{ cookiecutter.dataset_name }}"
+    version = "0.1.0"
+    description = ""
+    license = "{% if cookiecutter.license == 'Apache License 2.0' %}Apache-2.0{% elif cookiecutter.license == 'BSD-3-Clause License' %}BSD-3-Clause{% elif cookiecutter.license == 'MIT License' %}MIT{% endif %}"
+    readme = "README.md"
+    authors = ["{{ cookiecutter.author }} <{{ cookiecutter.email }}>"]
+    ```
+    <!-- {% endraw %} -->
+
+* Update `{{cookiecutter.dataset_name}}/poetry.lock`.
+
+  * Copy `poetry.lock` from the pristine project to
+    `{{cookiecutter.dataset_name}}/poetry.lock`.
+
+* Commit the updated `pyproject.toml` and `poetry.lock` files to the Git
+  repository.
 
 ------------------------------------------------------------------------------
 
-## 2. Getting Started
-
-### 2.1. Setting Up the Dataset Repository
-
-1. Install the required software dependencies.
-
-2. (OPTIONAL) Set up a Python virtual environment for the dataset repository.
-
-    * Copy `template-docs/extras/envrc.example` to the root directory of the
-      dataset repository and rename it to `.envrc`.
-
-    * Follow `direnv` instructions to enable `.envrc` file.
-
-3. Prepare storage for DVC.
-
-    * __Local__: Create directory on local file system for DVC to use for
-      "remote" storage.
-
-    * __AWS__: Create S3 bucket for DVC to use for remote storage.
-
-4. Initialize the dataset repository.
-
-    * Rename `config.yaml.template` to `config.yaml`.
-
-    * Set the parameters for the dataset repository in `config.yaml`.
-
-    * Run `init-repo.sh`.
-
-      ```
-      $ init-repo.sh config.yaml
-      ```
-
-    * Add the auto-generated `requirements.txt` file to git repository.
-
-      ```
-      $ git add requirements.txt
-      $ git commit requirements.txt -m "Add requirements.txt"
-      ```
-
-5. Update the contents of all template files and rename them with the
-   `template` suffixed removed (overwrite the original `README.md` and
-   `LICENSE` files).
-
-------------------------------------------------------------------------------
-
-## 3. Usage
-
-### 3.1. Conventions
-
-#### 3.1.1. `data` directory
-
-* All data files should be placed in the `data` directory.
-
-* Depending on the nature of the dataset, it may be useful to organize the
-  data files into sub-directories (e.g., by type of data).
-
-#### 3.1.2. `bin` directory
-
-Tools (e.g., data capture and processing scripts) developed to help maintain
-the dataset should be placed in the `bin` directory.
-
-#### 3.1.3. `README.md` file
-
-The `README.md` file should contain
-
-* a description of the dataset and
-
-* instructions for tools used to create and maintain the dataset.
-
-#### 3.1.4. `data/VERSION` file
-
-The `data/VERSION` file should contain the current version of the dataset.
-We recommend using basic [semantic version numbers][semantic-versioning]
-prefixed with a `v` (e.g. `v1.2.3`).
-
-#### 3.1.5. `requirements.txt` file
-
-Python packages required by tools for managing the dataset should be added to
-the `requirements.txt` file that is automatically generated by the
-`init-repo.sh` script.
-
-#### 3.1.6. `LICENSE-DATASET` file
-
-If the dataset managed by the repository is owned by a third-party, a
-`LICENSE-DATASET` file containing the licensing term should be included with
-the dataset repository. If dataset is not owned by a third-party, remove
-the `LICENSE-DATASET.template` file from the root directory of the dataset
-repository.
-
-### 3.2. Managing Datasets
-
-#### 3.2.1. Adding Data
-
-1. Add data files to the `data` directory.
-
-2. Add `data` to DVC tracking, and push the dataset to remote storage.
-
-    ```
-    $ dvc add data
-    $ dvc push
-    ```
-
-3. Commit DVC-generated changes to `data.dvc` to the git repository.
-
-    ```
-    $ git commit data.dvc -m "Add initial version of dataset"
-    $ git push
-    ```
-
-#### 3.2.2. Updating Data
-
-1. Update data files in the `data` directory.
-
-2. Update DVC tracking of `data` directory, and push the dataset to remote
-   storage.
-
-    ```
-    $ dvc add data
-    $ dvc push
-    ```
-
-3. Commit DVC-generated changes to `data.dvc` to the git repository.
-
-    ```
-    $ git commit data.dvc -m "Update dataset"
-    $ git push
-    ```
-
-#### 3.2.3. Removing Data
-
-1. Remove data files from the `data` directory.
-
-2. Update DVC tracking of `data` directory, and push the dataset to remote
-   storage.
-
-    ```
-    $ dvc add data
-    $ dvc push
-    ```
-
-3. Commit DVC-generated changes to `data.dvc` to the git repository.
-
-    ```
-    $ git commit data.dvc -m "Remove data from dataset"
-    $ git push
-    ```
-
-#### 3.2.4. Releasing an official dataset version
-
-1. Make sure that the dataset has been updated ([Section 3.2.2][#3.2.2])
-
-2. Update `README.md`.
-
-3. Increment the version number in `data/VERSION`.
-
-4. (RECOMMENDED) Update release notes for the dataset to include any major
-   changes between the previous version of the dataset.
-
-5. Create a tag for the release in git.
-
-    ```
-    $ git tag `cat data/VERSION`
-    $ git push --tags
-    ```
-
-6. (OPTIONAL) If the git repository for the dataset is hosted on GitHub (or
-   analogous service), create a release associated with the git tag created
-   in Step #4.
-
-### 3.3. Using Datasets
-
-#### 3.3.1. Importing Datasets
-
-To use a dataset managed by a DVC repository in a "read-only" manner (i.e.,
-without maintenance code), import the dataset after initializing DVC in the
-working directory.
-
-1. Initialize DVC.
-
-    ```
-    $ cd /PATH/TO/PROJECT
-    $ dvc init
-    ```
-
-    In the example commands above, `/PATH/TO/PROJECT` should be replaced by
-    the path to the project directory.
-
-2. Change to the directory in the project where data is stored.
-
-    ```
-    $ cd /PATH/TO/DATA
-    ```
-
-    In the example command above, `/PATH/TO/DATA/DIR` should be replaced by
-    the path to the data directory for the project.
-
-3. Import the dataset.
-
-    ```
-    $ dvc import URL /DVC/REPO/PATH -o /LOCAL/PATH
-    ```
-
-    In the example command above, the following substitutions should be made:
-
-     * `URL` should be replaced by URL of the Git repository for the dataset.
-
-     * `/DVC/REPO/PATH` should be replaced by the path within the DVC
-       repository where data resides. For repositories based on this template
-       repository, `/DVC/REPO/PATH` should most likely be set to `data`.
-
-     * `/LOCAL/PATH` should be replaced by the local path relative to
-       `/PATH/TO/DATA` where the dataset should be placed.
-
-    For example, if a dataset repository based on this template repository is
-    located at
-
-    `https://github.com/account/cool-dataset`
-
-    and we would like to to place the dataset into a directory named
-    `dataset-1`, we would use the following command:
-
-    ```
-    $ dvc import https://github.com/account/cool-dataset data -o dataset-1
-    ```
-
-#### 3.3.2. Updating Datasets
-
-If a previously imported dataset has been updated, the local copy of the
-dataset can be brought update date by using the `dvc update` command.
-
-```
-$ dvc update DATASET.dvc
-```
-
-In the example command above, the following substitutions should be made:
-
-* `DATASET.dvc` should be replaced by the `.dvc` file that was generated when
-  the dataset was imported.
-
-------------------------------------------------------------------------------
-
-## 4. References
+## 3. Documentation
 
 * [DVC Documentation][dvc-docs]
 
-* [Semantic Versioning][semantic-versioning]
+* [Poetry Quick Reference][poetry-quick-reference]
 
 ------------------------------------------------------------------------------
 
 [-----------------------------INTERNAL LINKS-----------------------------]: #
 
-[#1]: #1-overview
-[#1.1]: #11-package-contents
-[#1.2]: #12-software-dependencies
-[#1.3]: #13-license
-[#1.4]: #14-supported-dvc-remote-storage-providers
+[#1]: #1-usage
+[#1.1]: #11-cookiecutter-parameters
+[#1.2]: #12-setting-up-a-new-dataset
+[#1.3]: #13-dataset-license-considerations
+[#1.4]: #14-using-an-unsupported-dvc-remote-storage-provider
 
-[#2]: #2-getting-started
-[#2.1]: #21-setting-up-the-dataset-repository
+[#2]: #2-contributor-notes
+[#2.1]: #21-license
+[#2.2]: #22-repository-contents
+[#2.3]: #23-software-requirements
+[#2.4]: #24-setting-up-to-develop-the-cookiecutter
+[#2.5]: #25-additional-notes
 
-[#3]: #3-usage
-[#3.1]: #31-conventions
-[#3.2]: #32-managing-datasets
-[#3.2.1]: #321-adding-data
-[#3.2.2]: #322-updating-data
-[#3.2.3]: #323-removng-data
-[#3.2.4]: #324-releasing-an-official-dataset-version
-[#3.3]: #33-using-datasets
+[#3]: #3-documentation
 
-[#4]: #4-references
+[---------------------------- REPOSITORY LINKS ----------------------------]: #
+
+[poetry-quick-reference]: {{cookiecutter.dataset_name}}/extras/references/Poetry-Quick-Reference.md
+
+[vlxi-cookiecutter-dataset]: https://github.com/velexi-research/VLXI-Cookiecutter-Dataset
 
 [-----------------------------EXTERNAL LINKS-----------------------------]: #
 
+[cookiecutter]: https://cookiecutter.readthedocs.io/en/latest/
+
+[direnv]: https://direnv.net/
+
+[dvc]: https://dvc.org/
+
 [dvc-docs]: https://dvc.org/doc
 
-[semantic-versioning]: https://semver.org/
+[fastds]: https://github.com/DAGsHub/fds
+
+[git]: https://git-scm.com/
+
+[poetry]: https://python-poetry.org/
+
+[poetry-dependency-specification]: https://python-poetry.org/docs/dependency-specification/
+
+[pre-commit]: https://pre-commit.com/
+
+[python]: https://www.python.org/

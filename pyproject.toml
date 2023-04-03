@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "Velexi Dataset Cookiecutter"
+version = "0.2.0"
+description = "Template for DVC datasets"
+authors = ["Kevin Chu <kevin@velexi.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+cookiecutter = "^2.1.1"
+pre-commit = "^3.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
