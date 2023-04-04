@@ -1,13 +1,12 @@
 {{ cookiecutter.__dataset_name }}
 ===============================================================================
 
-___Authors___  
-CONTRIBUTOR NAME `<contributor@example.com>`
+A brief description of the dataset.
 
 -------------------------------------------------------------------------------
 
-Contents
---------
+Table of Contents
+-----------------
 
 1. [Overview][#1]
 
