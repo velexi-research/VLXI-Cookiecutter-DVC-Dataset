@@ -1,5 +1,6 @@
 {
-  "dataset_name": "dataset-name",
+  "dataset_name": "Dataset Name",
+  "__project_name": "{{ cookiecutter.dataset_name | slugify }}",
   "author": "Your Name",
   "email": "{{ cookiecutter.author | slugify(separator='.') }}@example.com",
   "dataset_license": [

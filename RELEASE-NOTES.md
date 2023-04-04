@@ -1,6 +1,13 @@
 Velexi Dataset Cookiecutter Release Notes
 =========================================
 -------------------------------------------------------------------------------
+0.3.0 (2023-04-04)
+==================
+### Cookiecutter Template Enhancements
+* Use a slugified version of the dataset name for the dataset directory and
+  `name` field in the `pyproject.toml` file.
+
+-------------------------------------------------------------------------------
 0.2.2 (2023-04-03)
 ==================
 ### Cookiecutter Template Bug Fix
