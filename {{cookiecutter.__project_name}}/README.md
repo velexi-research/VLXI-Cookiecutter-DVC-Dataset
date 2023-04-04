@@ -56,6 +56,7 @@ Brief description of the dataset.
 ├{% if cookiecutter.software_license == "Apache License 2.0" %}── SOFTWARE-NOTICE    <- copyright notice for the software components of the
 │                         dataset
 ├{% endif %}── Makefile           <- Makefile containing useful shortcuts (`make` rules).
+│                         Use `make help` to show the list of available rules.
 ├── pyproject.toml     <- Python project metadata file
 ├── poetry.lock        <- Poetry lockfile
 ├── bin/               <- scripts and programs for managing the dataset
