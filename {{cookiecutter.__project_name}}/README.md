@@ -272,14 +272,14 @@ List of supporting software tools for creating and maintaining dataset.
 
 #### Software Dependencies
 
-##### Base Requirements
+* __Base Requirements__
 
-* [Python][python] (>={{ cookiecutter.python_version | trim("~") | trim("^") }})
-* [Poetry][poetry] (>=1.2)
+  * [Python][python] (>={{ cookiecutter.python_version | trim("~") | trim("^") }})
+  * [Poetry][poetry] (>=1.2)
 
-##### Python Packages
+* __Python Packages__
 
-See the `[tool.poetry.dependencies]` section of the `pyproject.toml` file.
+  * See the `[tool.poetry.dependencies]` section of the `pyproject.toml` file.
 
 ### 3.4. Dataset Conventions
 
