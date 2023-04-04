@@ -21,6 +21,9 @@
 
 # --- Preparations
 
+# Dataset name
+project_name="{{ cookiecutter.__project_name }}"
+
 # DVC remote storage parameters
 dvc_remote_storage_provider="{{ cookiecutter.dvc_remote_storage_provider }}"
 
@@ -92,5 +95,5 @@ fds commit "Transfer tracking of '$data_dir' directory from Git to DVC."
 echo "Clean up..."
 
 # Remove temporary poetry environment
-poetry_env=`poetry env list | grep dataset-name | cut -d " " -f 1`
+poetry_env=`poetry env list | grep ${project_name:0:30} | cut -d " " -f 1`
 poetry env remove $poetry_env
