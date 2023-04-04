@@ -71,16 +71,16 @@ Brief description of the data format.
 
 ### 1.3. License
 {% if cookiecutter.dataset_license == "CC-BY-4.0 license" %}
-The data components in this dataset is covered under the Creative Commons
+The data contained in this dataset are covered under the Creative Commons
 Attribution 4.0 International Public License (included in the `DATASET-LICENSE`
-file).{% endif %}{% if cookiecutter.includes_third_party_data == "yes" %} Licenses for third-party data included in this dataset are contained in
+file).{% endif %}{% if cookiecutter.includes_third_party_data == "yes" %} Licenses for third-party data included with this dataset are contained in
 the `DATASET-NOTICE` file.{% endif %}
 {% if cookiecutter.software_license == "Apache License 2.0" %}
-The software components of this repository are covered under the Apache License
+The software contained in this repository is covered under the Apache License
 2.0 (included in the `SOFTWARE-LICENSE` file). The copyright for the software
-components is contained in the `SOFTWARE-NOTICE` file.
+is contained in the `SOFTWARE-NOTICE` file.
 {% else %}
-The software components of this repository are covered under the license
+The software contained in this repository is covered under the license
 contained in the `SOFTWARE-LICENSE` file.
 {% endif %}
 
