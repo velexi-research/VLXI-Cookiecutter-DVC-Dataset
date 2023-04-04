@@ -1,6 +1,7 @@
 {
   "dataset_name": "Dataset Name",
-  "__project_name": "{{ cookiecutter.dataset_name | slugify }}",
+  "__dataset_name": "{{ cookiecutter.dataset_name }}{% if 'dataset' not in cookiecutter.dataset_name.lower() %} Dataset{% endif %}",
+  "__project_name": "{{ cookiecutter.__dataset_name | slugify }}",
   "author": "Your Name",
   "email": "{{ cookiecutter.author | slugify(separator='.') }}@example.com",
   "dataset_license": [

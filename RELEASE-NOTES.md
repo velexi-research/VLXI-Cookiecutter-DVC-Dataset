@@ -4,6 +4,7 @@ Velexi Dataset Cookiecutter Release Notes
 0.3.0 (2023-04-04)
 ==================
 ### Cookiecutter Template Enhancements
+* Add logic for default dataset naming convention.
 * Use a slugified version of the dataset name for the dataset directory and
   `name` field in the `pyproject.toml` file.
 

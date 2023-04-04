@@ -1,4 +1,4 @@
-{{ cookiecutter.dataset_name }}
+{{ cookiecutter.__dataset_name }}
 ===============================================================================
 
 ___Authors___  
