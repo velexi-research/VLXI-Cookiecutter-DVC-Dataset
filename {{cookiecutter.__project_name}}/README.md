@@ -231,7 +231,7 @@ In the example command above, the following substitutions should be made:
 
 ### 3.2. Releasing an Official Dataset Version
 
-1. Make sure that the dataset has been updated ([Section 3.2][#3.2])
+1. Make sure that the dataset has been updated ([Section 3.1.2][#3.1.2])
 
 2. Update the `README.md` file.
 
@@ -285,7 +285,9 @@ See the `[tool.poetry.dependencies]` section of the `pyproject.toml` file.
 
 #### Data
 
-* `data` directory. All data files should be placed in the `data` directory.
+* `data` directory. All data files that should be imported when using the
+  `dvc import URL data -o /LOCAL/PATH` command should be placed in the `data`
+  directory.
 
   * Depending on the nature of the dataset, it may be useful to organize the
   data files into sub-directories (e.g., by type of data).
@@ -348,6 +350,7 @@ See the `[tool.poetry.dependencies]` section of the `pyproject.toml` file.
 
 [#3]: #3-maintaining-the-dataset
 [#3.1]: #31-managing-data
+[#3.1.2]: #312-updating-data
 [#3.2]: #32-releasing-an-official-dataset-version
 [#3.3]: #33-supporting-software-tools
 [#3.4]: #34-dataset-conventions
