@@ -12,11 +12,11 @@ Table of Contents
 
     1.1. [Dataset Organization][#1.1]
 
-    1.2. [Dataset Conventions][#1.2]
+    1.2. [Data Format][#1.2]
 
     1.3. [License][#1.3]
 
-    1.4. [Supporting Software Tools][#1.4]
+    1.4. [Known Issues][#1.4]
 
 2. [Using the Dataset][#2]
 
@@ -26,17 +26,15 @@ Table of Contents
 
 3. [Maintaining the Dataset][#3]
 
-    3.1. [Adding Data][#3.1]
+    3.1. [Managing Data][#3.1]
 
-    3.2. [Updating Data][#3.2]
+    3.2. [Releasing an Official Dataset Version][#3.2]
 
-    3.3. [Removing Data][#3.3]
+    3.3. [Supporting Software Tools][#3.3]
 
-    3.4. [Releasing an Official Dataset Version][#3.4]
+    3.4. [Dataset Conventions][#3.4]
 
-4. [Known Issues][#4]
-
-5. [References][#5]
+4. [References][#4]
 
 -------------------------------------------------------------------------------
 
@@ -67,44 +65,9 @@ Brief description of the dataset.
                           for dataset maintenance
 ```
 
-### 1.2. Dataset Conventions
+### 1.2. Data Format
 
-#### Data
-
-* `data` directory. All data files should be placed in the `data` directory.
-
-  * Depending on the nature of the dataset, it may be useful to organize the
-  data files into sub-directories (e.g., by type of data).
-
-* `data/VERSION` file. The `data/VERSION` file contains the version number of
-  the latest official release of the dataset. It is generated automatically
-  and _should not be manually edited_.
-
-#### Documentation
-
-* `README.md` file. The `README.md` file should contain
-
-  * a high-level description of the dataset and
-
-  * instructions for software tools used to create and maintain the dataset.
-
-* `docs` directory. The `docs` directory should be used for detailed
-  documentation for the dataset (i.e., data and supporting software tools).
-
-#### Supporting Software Tools
-
-* `bin` directory. The `bin` directory should be used for supporting software
-  tools (e.g., data capture and processing scripts) developed to help maintain
-  the dataset.
-
-* `pyproject.toml` file. Python dependencies for supporting tools should be
-  maintained in the `pyproject.toml` file. Most of the time, `poetry` utility
-  will appropriately update `pyproject.toml` as dependencies are added or
-  removed.
-
-* `extras` directory. The `extras` directory should be used for ancillary files
-  (e.g., `direnv` configuration template, general reference documents for tools
-  that are not dataset-specific).
+Brief description of the data format.
 
 ### 1.3. License
 {% if cookiecutter.dataset_license == "CC-BY-4.0 license" %}
@@ -121,28 +84,9 @@ The software components of this repository are covered under the license
 contained in the `SOFTWARE-LICENSE` file.
 {% endif %}
 
-### 1.4. Supporting Software Tools
+### 1.4. Known Issues
 
-List of supporting software tools for creating and maintaining dataset.
-
-* Tool #1
-
-  * __Usage__. Instructions for use of Tool #1 to create and maintain dataset.
-
-* Tool #2
-
-  * __Usage__. Instructions for use of Tool #2 to create and maintain dataset.
-
-#### Software Dependencies
-
-##### Base Requirements
-
-* [Python][python] (>={{ cookiecutter.python_version | trim("~") | trim("^") }})
-* [Poetry][poetry] (>=1.2)
-
-##### Python Packages
-
-See the `[tool.poetry.dependencies]` section of the `pyproject.toml` file.
+* List of known issues with the dataset.
 
 -------------------------------------------------------------------------------
 
@@ -214,7 +158,9 @@ In the example command above, the following substitutions should be made:
 
 ## 3. Maintaining the Dataset
 
-### 3.1. Adding Data
+### 3.1. Managing Data
+
+#### 3.1.1. Adding Data
 
 1. Add the data files to the `data` directory.
 
@@ -237,7 +183,7 @@ In the example command above, the following substitutions should be made:
    $ fds push
    ```
 
-### 3.2. Updating Data
+#### 3.1.2. Updating Data
 
 1. Update the data files in the `data` directory.
 
@@ -260,7 +206,7 @@ In the example command above, the following substitutions should be made:
    $ fds push
    ```
 
-### 3.3. Removing Data
+#### 3.1.3. Removing Data
 
 1. Remove the data files from the `data` directory.
 
@@ -283,7 +229,7 @@ In the example command above, the following substitutions should be made:
    $ fds push
    ```
 
-### 3.4. Releasing an official dataset version
+### 3.2. Releasing an Official Dataset Version
 
 1. Make sure that the dataset has been updated ([Section 3.2][#3.2])
 
@@ -312,15 +258,71 @@ In the example command above, the following substitutions should be made:
    analogous service), create a release associated with the git tag created
    in Step #4.
 
-------------------------------------------------------------------------------
+### 3.3. Supporting Software Tools
 
-## 4. Known Issues
+List of supporting software tools for creating and maintaining dataset.
 
-* List of known issues with the dataset.
+* Tool #1
+
+  * __Usage__. Instructions for use of Tool #1 to create and maintain dataset.
+
+* Tool #2
+
+  * __Usage__. Instructions for use of Tool #2 to create and maintain dataset.
+
+#### Software Dependencies
+
+##### Base Requirements
+
+* [Python][python] (>={{ cookiecutter.python_version | trim("~") | trim("^") }})
+* [Poetry][poetry] (>=1.2)
+
+##### Python Packages
+
+See the `[tool.poetry.dependencies]` section of the `pyproject.toml` file.
+
+### 3.4. Dataset Conventions
+
+#### Data
+
+* `data` directory. All data files should be placed in the `data` directory.
+
+  * Depending on the nature of the dataset, it may be useful to organize the
+  data files into sub-directories (e.g., by type of data).
+
+* `data/VERSION` file. The `data/VERSION` file contains the version number of
+  the latest official release of the dataset. It is generated automatically
+  and _should not be manually edited_.
+
+#### Documentation
+
+* `README.md` file. The `README.md` file should contain
+
+  * a high-level description of the dataset and
+
+  * instructions for software tools used to create and maintain the dataset.
+
+* `docs` directory. The `docs` directory should be used for detailed
+  documentation for the dataset (i.e., data and supporting software tools).
+
+#### Supporting Software Tools
+
+* `bin` directory. The `bin` directory should be used for supporting software
+  tools (e.g., data capture and processing scripts) developed to help maintain
+  the dataset.
+
+* `pyproject.toml` file. Python dependencies for supporting tools should be
+  maintained in the `pyproject.toml` file. Most of the time, `poetry` utility
+  will appropriately update `pyproject.toml` as dependencies are added or
+  removed.
+
+* `extras` directory. The `extras` directory should be used for ancillary files
+  (e.g., `direnv` configuration template, general reference documents for tools
+  that are not dataset-specific).
 
 -------------------------------------------------------------------------------
 
-## 5. References
+## 4. References
 
 * [DVC Documentation][dvc-docs]
 
@@ -336,23 +338,21 @@ In the example command above, the following substitutions should be made:
 
 [#1]: #1-overview
 [#1.1]: #11-dataset-organization
-[#1.2]: #12-dataset-conventions
+[#1.2]: #12-data-format
 [#1.3]: #13-license
-[#1.4]: #14-supporting-software-tools
+[#1.4]: #14-known-issues
 
 [#2]: #2-using-the-dataset
 [#2.1]: #21-importing-the-dataset
 [#2.2]: #22-updating-the-dataset
 
 [#3]: #3-maintaining-the-dataset
-[#3.1]: #31-adding-data
-[#3.2]: #32-updating-data
-[#3.3]: #33-removing-data
-[#3.4]: #34-releasing-an-official-dataset-version
+[#3.1]: #31-managing-data
+[#3.2]: #32-releasing-an-official-dataset-version
+[#3.3]: #33-supporting-software-tools
+[#3.4]: #34-dataset-conventions
 
-[#4]: #4-known-issues
-
-[#5]: #5-references
+[#4]: #4-references
 
 [---------------------------- REPOSITORY LINKS ----------------------------]: #
 
