@@ -217,6 +217,8 @@ Table of Contents
 
    * Customize the `README.md` file to reflect the specifics of the dataset.
 
+   * Fill in any empty fields in `pyproject.toml`.
+
    * Commit all updated files (e.g., `poetry.lock`) to the dataset Git
      repository.
 
