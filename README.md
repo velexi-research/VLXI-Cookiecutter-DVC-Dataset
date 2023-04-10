@@ -318,7 +318,7 @@ See `[tool.poetry.dependencies]` section of [`pyproject.toml`](pyproject.toml).
 #### Updating Cookiecutter Template Dependencies
 
 To update the Python dependencies for the template (contained in the
-`{{cookiecutter.dataset_name}}` directory), use the following procedure to
+`{{cookiecutter.__project_name}}` directory), use the following procedure to
 ensure that package dependencies for developing the non-template components
 of the cookiecutter do not interfere with package dependencies for the
 template.
@@ -349,10 +349,10 @@ template.
   * Use `poetry` to update the package dependencies and versions recorded in
     the `poetry.lock` file.
 
-* Update `{{cookiecutter.dataset_name}}/pyproject.toml`.
+* Update `{{cookiecutter.__project_name}}/pyproject.toml`.
 
   * Copy `pyproject.toml` from the pristine project to
-    `{{cookiecutter.dataset_name}}/pyproject.toml`.
+    `{{cookiecutter.__project_name}}/pyproject.toml`.
 
   * Restore the templated values in the `[tool.poetry]` section to the
     following:
@@ -360,7 +360,7 @@ template.
     <!-- {% raw %} -->
     ```jinja
     [tool.poetry]
-    name = "{{ cookiecutter.dataset_name }}"
+    name = "{{ cookiecutter.__project_name }}"
     version = "0.1.0"
     description = ""
     license = "{% if cookiecutter.license == 'Apache License 2.0' %}Apache-2.0{% elif cookiecutter.license == 'BSD-3-Clause License' %}BSD-3-Clause{% elif cookiecutter.license == 'MIT License' %}MIT{% endif %}"
@@ -369,10 +369,10 @@ template.
     ```
     <!-- {% endraw %} -->
 
-* Update `{{cookiecutter.dataset_name}}/poetry.lock`.
+* Update `{{cookiecutter.__project_name}}/poetry.lock`.
 
   * Copy `poetry.lock` from the pristine project to
-    `{{cookiecutter.dataset_name}}/poetry.lock`.
+    `{{cookiecutter.__project_name}}/poetry.lock`.
 
 * Commit the updated `pyproject.toml` and `poetry.lock` files to the Git
   repository.
@@ -406,7 +406,7 @@ template.
 
 [---------------------------- REPOSITORY LINKS ----------------------------]: #
 
-[poetry-quick-reference]: {{cookiecutter.dataset_name}}/extras/quick-references/Poetry-Quick-Reference.md
+[poetry-quick-reference]: {{cookiecutter.__project_name}}/extras/quick-references/Poetry-Quick-Reference.md
 
 [vlxi-cookiecutter-dataset]: https://github.com/velexi-research/VLXI-Cookiecutter-Dataset
 
