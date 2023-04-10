@@ -21,6 +21,9 @@
 
 # --- Preparations
 
+# Dataset name
+project_name="{{ cookiecutter.__project_name }}"
+
 # DVC remote storage parameters
 dvc_remote_storage_provider="{{ cookiecutter.dvc_remote_storage_provider }}"
 
@@ -41,8 +44,9 @@ fi
 
 # --- Set up temporary poetry environment
 
-echo "Set up temporary poetry environment..."
-echo "--------------------------------------"
+echo
+echo "-------------------------------------------------------------------------------"
+echo "Set up temporary poetry environment"
 echo
 
 # Install DVC
@@ -60,20 +64,48 @@ source $(poetry env info --path)/bin/activate
 
 # --- Initialize Git repository
 
-echo "Initialize Git repository..."
+echo
+echo "-------------------------------------------------------------------------------"
+echo "Initialize Git repository"
+echo
+
 git init
+
+# --- Install pre-commit hooks
+
+echo
+echo "-------------------------------------------------------------------------------"
+echo "Install pre-commit hooks"
+echo
+
+pre-commit install
+
+# --- Add template files to Git repository
+
+echo
+echo "-------------------------------------------------------------------------------"
+echo "Add template files to Git repository"
+echo
+
 git add .
 git commit -m "Initial commit."
 
 # --- Initialize DVC
 
-echo "Initialize DVC..."
+echo
+echo "-------------------------------------------------------------------------------"
+echo "Initialize DVC"
+echo
+
 fds init
 fds commit "Initialize DVC."
 
 # --- Transfer tracking of $data_dir directory from Git to DVC
 
-echo "Transfer tracking of $data_dir directory from Git to DVC..."
+echo
+echo "-------------------------------------------------------------------------------"
+echo "Transfer tracking of $data_dir directory from Git to DVC"
+echo
 
 # Remove $data_dir from Git management
 git rm -r --cached $data_dir
@@ -89,8 +121,11 @@ fds commit "Transfer tracking of '$data_dir' directory from Git to DVC."
 
 # --- Clean up
 
-echo "Clean up..."
+echo
+echo "-------------------------------------------------------------------------------"
+echo "Clean up"
+echo
 
 # Remove temporary poetry environment
-poetry_env=`poetry env list | grep dataset-name | cut -d " " -f 1`
+poetry_env=`poetry env list | grep ${project_name:0:30} | cut -d " " -f 1`
 poetry env remove $poetry_env
