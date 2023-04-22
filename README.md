@@ -58,7 +58,7 @@ Table of Contents
 
    2.5. [Additional Notes][#2.5]
 
-3. [Documentation][#3]
+3. [References][#3]
 
 ------------------------------------------------------------------------------
 
@@ -177,7 +177,7 @@ Table of Contents
        $ git push -u origin main
        ```
 
-6. _Optional_ Configure remote storage for DVC (e.g., an AWS S3 bucket).
+6. _Optional_. Configure remote storage for DVC (e.g., an AWS S3 bucket).
 
    * Create remote storage for the dataset. Below are instructions for setting
      up a storage on the local file system or AWS S3.
@@ -190,14 +190,33 @@ Table of Contents
    * Configure the remote DVC storage for the dataset.
 
      ```shell
-     $ dvc remote add -d storage DVC_REMOTE
+     $ dvc remote add -d origin DVC_REMOTE
      $ fds commit "Add DVC remote storage."
      ```
 
      where `DVC_REMOTE` is the URL of the remote storage for the dataset
      (e.g., the path to a directory on the local file system or the URL to
-     the S3 bucket). ___Note___: if desired, the name "storage" can be
-     replaced by a different name.
+     the S3 bucket).
+
+     ___Important Note___. The name of the remote storage must be set to
+     "origin" if `fds` is used to push data to remote storage. If the name is
+     not set to "origin", `dvc` must be used to push data to remote storage.
+
+   * Configure the credentials that DVC should use to connect to remote storage.
+     ___Note___: the `--local` option ensures that these DVC configurations are
+     stored in a local configuration file (`.dvc/config.local`) that should
+     _not_ be committed to the Git repository.
+
+     * __AWS S3__. Set the AWS profile, AWS access keys, or credentials file.
+       See [DVC Documentation: Amazon S3 and Compatible Servers][dvc-docs-aws-s3]
+       for more options. For example, to set the AWS profile (to use for
+       accessing the "origin" remote storage), use the following command.
+
+       ```shell
+       $ dvc remote modify --local origin profile AWS_PROFILE
+       ```
+
+       where `AWS_PROFILE` is the AWS profile that should be used to access S3.
 
 7. Finish setting up the new dataset.
 
@@ -379,9 +398,11 @@ template.
 
 ------------------------------------------------------------------------------
 
-## 3. Documentation
+## 3. References
 
 * [DVC Documentation][dvc-docs]
+
+  * [DVC Documentation: Amazon S3 and Compatible Servers][dvc-docs-aws-s3]
 
 * [Poetry Quick Reference][poetry-quick-reference]
 
@@ -402,7 +423,7 @@ template.
 [#2.4]: #24-setting-up-to-develop-the-cookiecutter
 [#2.5]: #25-additional-notes
 
-[#3]: #3-documentation
+[#3]: #3-references
 
 [---------------------------- REPOSITORY LINKS ----------------------------]: #
 
@@ -419,6 +440,8 @@ template.
 [dvc]: https://dvc.org/
 
 [dvc-docs]: https://dvc.org/doc
+
+[dvc-docs-aws-s3]: https://dvc.org/doc/user-guide/data-management/remote-storage/amazon-s3
 
 [fastds]: https://github.com/DAGsHub/fds
 

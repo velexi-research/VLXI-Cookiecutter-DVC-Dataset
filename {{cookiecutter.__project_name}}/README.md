@@ -101,33 +101,35 @@ import the dataset after initializing DVC in the working directory.
 
    ```
    $ cd /PATH/TO/PROJECT
-   $ dvc init
+   $ fds init
+   $ fds commit "Initialize DVC."
    ```
 
    In the example commands above, `/PATH/TO/PROJECT` should be replaced
    by the path to the directory that where the dataset will be used.
 
-2. Change to the directory where the imported dataset will be stored.
+2. ___Recommended___. Enable auto staging for DVC-managed data.
 
-    ```
-    $ cd /PATH/TO/DATA
-    ```
-
-    In the example command above, `/PATH/TO/DATA` should be replaced by the
-    path to the data directory.
+   ```
+   $ dvc config core.autostage true
+   $ fds commit "Enable DVC auto staging."
+   ```
 
 3. Import the dataset.
 
     ```
-    $ dvc import URL data -o /LOCAL/PATH
+    $ dvc import URL data -o LOCAL_PATH
+    $ fds commit "Import '{{ cookiecutter.__dataset_name }}'."
     ```
 
-    In the example command above, the following substitutions should be made:
+    In the example commands above, the following substitutions should be made:
 
      * `URL` should be replaced by URL of the Git repository for the dataset.
 
-     * `/LOCAL/PATH` should be replaced by the local path relative to
-       `/PATH/TO/DATA` where the dataset should be placed.
+     * `LOCAL_PATH` should be replaced by the local path relative to
+       `/PATH/TO/PROJECT` where the dataset should be placed. __Note__: the
+       parent directory of `LOCAL_PATH` should be created before running
+       `dvc import`.
 
     For example, if the dataset repository is located at
 
@@ -137,22 +139,39 @@ import the dataset after initializing DVC in the working directory.
     `data/cool-dataset`, we would use the following command:
 
     ```
+    $ mkdir data
     $ dvc import https://github.com/account/cool-dataset data -o data/cool-dataset
+    $ fds commit "Import cool-dataset."
     ```
 
 ### 2.2. Updating the Dataset
 
 If a previously imported dataset has been updated, the local copy of the
-dataset can be brought update date by using the `dvc update` command.
+dataset can be updated (to the latest version on the default branch of the
+dataset Git repository) by using the `dvc update` command.
 
 ```
 $ dvc update DATASET.dvc
 ```
 
-In the example command above, the following substitutions should be made:
+or
+
+```
+$ dvc update DATASET
+```
+
+In the example commands above, the following substitutions should be made:
 
 * `DATASET.dvc` should be replaced by the `.dvc` file that was generated when
-  the dataset was imported.
+  the dataset was imported (or, equivalently, `DATASET` should be replaced by
+  name of the directory that the dataset was imported into).
+
+To specify the particular revision of the dataset to retreive, use the
+`--rev REVISION` option, where `REVISION` is a Git tag, branch, or commit SHA/hash.
+
+```
+$ dvc update DATASET.dvc --rev REVISION
+```
 
 -------------------------------------------------------------------------------
 
