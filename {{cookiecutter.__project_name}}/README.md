@@ -119,7 +119,7 @@ import the dataset after initializing DVC in the working directory.
 
     ```
     $ dvc import URL data -o LOCAL_PATH
-    $ fds commit "Import DATASET_NAME."
+    $ fds commit "Import {{ cookiecutter.__dataset_name }}."
     ```
 
     In the example commands above, the following substitutions should be made:
@@ -130,8 +130,6 @@ import the dataset after initializing DVC in the working directory.
        `/PATH/TO/PROJECT` where the dataset should be placed. __Note__: the
        parent directory of `LOCAL_PATH` should be created before running
        `dvc import`.
-
-     * `DATASET_NAME` should be replaced by the name of the imported dataset.
 
     For example, if the dataset repository is located at
 
@@ -149,16 +147,31 @@ import the dataset after initializing DVC in the working directory.
 ### 2.2. Updating the Dataset
 
 If a previously imported dataset has been updated, the local copy of the
-dataset can be brought update date by using the `dvc update` command.
+dataset can be updated (to the latest version on the default branch of the
+dataset Git repository) by using the `dvc update` command.
+
+```
+$ dvc update DATASET
+```
+
+or
 
 ```
 $ dvc update DATASET.dvc
 ```
 
-In the example command above, the following substitutions should be made:
+In the example commands above, the following substitutions should be made:
 
-* `DATASET.dvc` should be replaced by the `.dvc` file that was generated when
-  the dataset was imported.
+* `DATASET` should be replaced by name of the directory that the dataset was
+  imported to (or, equivalently, `DATASET.dvc` should be replaced by the `.dvc`
+  file that was generated when the dataset was imported).
+
+To specify the particular revision of the dataset to retreive, use the
+`-r REVISION` option, where `REVISION` is a Git tag, branch, or commit SHA/hash.
+
+```
+$ dvc update DATASET.dvc -r REVISION
+```
 
 -------------------------------------------------------------------------------
 
