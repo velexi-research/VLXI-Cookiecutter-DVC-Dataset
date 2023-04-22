@@ -5,6 +5,7 @@ Velexi Dataset Cookiecutter Release Notes
 ==================
 ### Cookiecutter Template Enhancements
 * Fix errors in documentation for setting up a new dataset.
+* Update dataset import instructions in template README.
 
 -------------------------------------------------------------------------------
 0.3.0 (2023-04-09)
