@@ -151,20 +151,20 @@ dataset can be updated (to the latest version on the default branch of the
 dataset Git repository) by using the `dvc update` command.
 
 ```
-$ dvc update DATASET
+$ dvc update DATASET.dvc
 ```
 
 or
 
 ```
-$ dvc update DATASET.dvc
+$ dvc update DATASET
 ```
 
 In the example commands above, the following substitutions should be made:
 
-* `DATASET` should be replaced by name of the directory that the dataset was
-  imported to (or, equivalently, `DATASET.dvc` should be replaced by the `.dvc`
-  file that was generated when the dataset was imported).
+* `DATASET.dvc` should be replaced by the `.dvc` file that was generated when
+  the dataset was imported (or, equivalently, `DATASET` should be replaced by
+  name of the directory that the dataset was imported into).
 
 To specify the particular revision of the dataset to retreive, use the
 `-r REVISION` option, where `REVISION` is a Git tag, branch, or commit SHA/hash.
