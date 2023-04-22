@@ -167,10 +167,10 @@ In the example commands above, the following substitutions should be made:
   name of the directory that the dataset was imported into).
 
 To specify the particular revision of the dataset to retreive, use the
-`-r REVISION` option, where `REVISION` is a Git tag, branch, or commit SHA/hash.
+`--rev REVISION` option, where `REVISION` is a Git tag, branch, or commit SHA/hash.
 
 ```
-$ dvc update DATASET.dvc -r REVISION
+$ dvc update DATASET.dvc --rev REVISION
 ```
 
 -------------------------------------------------------------------------------
