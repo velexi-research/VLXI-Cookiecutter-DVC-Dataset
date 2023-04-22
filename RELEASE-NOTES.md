@@ -1,6 +1,12 @@
 Velexi Dataset Cookiecutter Release Notes
 =========================================
 -------------------------------------------------------------------------------
+0.3.1 (2023-04-22)
+==================
+### Cookiecutter Template Enhancements
+* Fix errors in documentation for setting up a new dataset.
+
+-------------------------------------------------------------------------------
 0.3.0 (2023-04-09)
 ==================
 ### Cookiecutter Template
@@ -42,6 +48,6 @@ Velexi Dataset Cookiecutter Release Notes
 -------------------------------------------------------------------------------
 v0.1.0 (2021-02-24)
 ===================
-* Initial version of package. 
+* Initial version of package.
 
 -------------------------------------------------------------------------------
