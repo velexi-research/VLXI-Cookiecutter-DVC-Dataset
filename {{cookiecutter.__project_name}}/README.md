@@ -119,7 +119,7 @@ import the dataset after initializing DVC in the working directory.
 
     ```
     $ dvc import URL data -o LOCAL_PATH
-    $ fds commit "Import {{ cookiecutter.__dataset_name }}."
+    $ fds commit "Import '{{ cookiecutter.__dataset_name }}'."
     ```
 
     In the example commands above, the following substitutions should be made:
