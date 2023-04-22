@@ -102,7 +102,7 @@ import the dataset after initializing DVC in the working directory.
    ```
    $ cd /PATH/TO/PROJECT
    $ fds init
-   $ fds commit "Initialize DVC."
+   $ fds commit "Initialize DVC"
    ```
 
    In the example commands above, `/PATH/TO/PROJECT` should be replaced
@@ -112,14 +112,14 @@ import the dataset after initializing DVC in the working directory.
 
    ```
    $ dvc config core.autostage true
-   $ fds commit "Enable DVC auto staging."
+   $ fds commit "Enable DVC auto staging"
    ```
 
 3. Import the dataset.
 
     ```
     $ dvc import URL data -o LOCAL_PATH
-    $ fds commit "Import '{{ cookiecutter.__dataset_name }}'."
+    $ fds commit "Import '{{ cookiecutter.__dataset_name }}'"
     ```
 
     In the example commands above, the following substitutions should be made:
@@ -141,7 +141,7 @@ import the dataset after initializing DVC in the working directory.
     ```
     $ mkdir data
     $ dvc import https://github.com/account/cool-dataset data -o data/cool-dataset
-    $ fds commit "Import cool-dataset."
+    $ fds commit "Import cool-dataset"
     ```
 
 ### 2.2. Updating the Dataset
@@ -152,12 +152,14 @@ dataset Git repository) by using the `dvc update` command.
 
 ```
 $ dvc update DATASET.dvc
+$ fds commit "Update '{{ cookiecutter.__dataset_name }}'"
 ```
 
 or
 
 ```
 $ dvc update DATASET
+$ fds commit "Update '{{ cookiecutter.__dataset_name }}'"
 ```
 
 In the example commands above, the following substitutions should be made:
@@ -171,6 +173,7 @@ To specify the particular revision of the dataset to retreive, use the
 
 ```
 $ dvc update DATASET.dvc --rev REVISION
+$ fds commit "Update '{{ cookiecutter.__dataset_name }}'"
 ```
 
 -------------------------------------------------------------------------------
