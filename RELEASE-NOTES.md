@@ -1,6 +1,13 @@
 Velexi Dataset Cookiecutter Release Notes
 =========================================
 -------------------------------------------------------------------------------
+0.3.2 (2023-04-23)
+==================
+### Cookiecutter Template Enhancements
+* Improve robustness of cookiecutter hooks.
+* Add links to license files in template README.
+
+-------------------------------------------------------------------------------
 0.3.1 (2023-04-22)
 ==================
 ### Cookiecutter Template Enhancements
