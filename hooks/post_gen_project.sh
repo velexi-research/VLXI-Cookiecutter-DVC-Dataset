@@ -32,6 +32,12 @@ data_dir="data"
 
 # --- Update project template files based on user configuration
 
+# Replace DATASET-LICENSE with an empty file when dataset_license is set to None
+if [[ "{{ cookiecutter.dataset_license }}" = "None" ]]; then
+    rm DATASET-LICENSE
+    touch DATASET-LICENSE
+fi
+
 # Remove DATASET-NOTICE file if dataset does not include third-party data
 if [[ "{{ cookiecutter.includes_third_party_data }}" = "no" ]]; then
     rm DATASET-NOTICE
@@ -48,6 +54,9 @@ echo
 echo "-------------------------------------------------------------------------------"
 echo "Set up temporary poetry environment"
 echo
+
+# Locally configure poetry to use in-project virtual environments
+poetry config --local virtualenvs.in-project true
 
 # Install DVC
 if [ "$dvc_remote_storage_provider" = "aws" ]; then
@@ -87,8 +96,12 @@ echo "--------------------------------------------------------------------------
 echo "Add template files to Git repository"
 echo
 
+# Remove poetry.toml so that it's not added to the Git repository
+rm poetry.toml
+
+# Add initial files
 git add .
-git commit -m "Initial commit."
+git commit -m "Initial commit"
 
 # --- Initialize DVC
 
@@ -98,7 +111,17 @@ echo "Initialize DVC"
 echo
 
 fds init
-fds commit "Initialize DVC."
+fds commit "Initialize DVC"
+
+# --- Configure DVC
+
+echo
+echo "-------------------------------------------------------------------------------"
+echo "Enable DVC auto-staging"
+echo
+
+dvc config core.autostage true
+fds commit "Enable DVC auto-staging"
 
 # --- Transfer tracking of $data_dir directory from Git to DVC
 
@@ -117,7 +140,7 @@ dvc add $data_dir
 git add $data_dir.dvc
 
 # Commit change
-fds commit "Transfer tracking of '$data_dir' directory from Git to DVC."
+fds commit "Transfer tracking of '$data_dir' directory from Git to DVC"
 
 # --- Clean up
 
@@ -127,5 +150,4 @@ echo "Clean up"
 echo
 
 # Remove temporary poetry environment
-poetry_env=`poetry env list | grep ${project_name:0:30} | cut -d " " -f 1`
-poetry env remove $poetry_env
+rm -rf .venv
