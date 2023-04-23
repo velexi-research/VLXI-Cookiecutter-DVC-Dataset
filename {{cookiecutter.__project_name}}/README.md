@@ -311,7 +311,7 @@ List of supporting software tools for creating and maintaining dataset.
 #### Data
 
 * `data` directory. All data files that should be imported when using the
-  `dvc import URL data -o /LOCAL/PATH` command should be placed in the `data`
+  `dvc import URL data -o LOCAL_PATH` command should be placed in the `data`
   directory.
 
   * Depending on the nature of the dataset, it may be useful to organize the
