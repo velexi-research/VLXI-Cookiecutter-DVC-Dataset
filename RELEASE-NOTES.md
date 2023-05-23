@@ -1,6 +1,16 @@
 Velexi Dataset Cookiecutter Release Notes
 =========================================
 -------------------------------------------------------------------------------
+0.3.3 (2023-05-22)
+==================
+### Cookiecutter Template
+* Polish dot-envrc.
+
+### Cookiecutter Development
+* Polish dot-envrc.
+* Update package dependency versions.
+
+-------------------------------------------------------------------------------
 0.3.2 (2023-04-23)
 ==================
 ### Cookiecutter Template
