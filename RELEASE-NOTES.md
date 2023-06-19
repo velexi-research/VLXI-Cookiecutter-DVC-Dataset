@@ -9,7 +9,7 @@ Velexi Dataset Cookiecutter Release Notes
 
 ### Cookiecutter Development
 * Polish .gitignore.
-* Polish pre-commit configuration.
+* Add pre-commit configuration.
 
 -------------------------------------------------------------------------------
 0.3.3 (2023-05-22)
