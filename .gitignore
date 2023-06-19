@@ -1,32 +1,44 @@
-# --- Project files
+# --- Environments
 
-# log files
-*.log
+# direnv
+.direnv
+.envrc
+
+# conda
+.conda
+
+# Python virtual environments
+.venv
 
 # --- Python files
 
-# compiled source
-*.pyc
+# compiled code
+__pycache__/
+*.py[cod]
 
 # testing
+htmlcov/
 .cache
 .coverage
 .coverage.*
 .pytest_cache
+.tox/
+
+# --- Code editors
+
+# VS Code
+.vscode/
+
+# Pycharm
+.idea
+
+# Spyder
+.spyproject/
+
+# vim
+*.sw[po]
 
 # --- Miscellaneous
 
-# direnv
-/.direnv
-.envrc
-
-# vim
-.*.swp
-
 # macOS
 .DS_Store*
-
-# --- DVC
-
-/*.yaml
-/data
