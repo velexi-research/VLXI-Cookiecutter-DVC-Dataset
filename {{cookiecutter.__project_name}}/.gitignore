@@ -48,6 +48,7 @@ docs/api
 
 # --- Julia
 
+# Manifest
 Manifest.toml
 
 # --- Compiled code
