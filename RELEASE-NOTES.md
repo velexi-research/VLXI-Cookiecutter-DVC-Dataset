@@ -1,6 +1,16 @@
 Velexi Dataset Cookiecutter Release Notes
 =========================================
 -------------------------------------------------------------------------------
+0.3.5 (2023-06-30)
+==================
+### Cookiecutter Template
+* Update dependencies in pre-commit configuration.
+
+### Cookiecutter Maintenance
+* Fix bug in cookiecutter post-gen script.
+* Update dependencies in pre-commit configuration.
+
+-------------------------------------------------------------------------------
 0.3.4 (2023-06-19)
 ==================
 ### Cookiecutter Template
