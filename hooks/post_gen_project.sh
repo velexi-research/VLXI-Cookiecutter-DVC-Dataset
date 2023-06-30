@@ -80,15 +80,6 @@ echo
 
 git init
 
-# --- Install pre-commit hooks
-
-echo
-echo "-------------------------------------------------------------------------------"
-echo "Install pre-commit hooks"
-echo
-
-pre-commit install
-
 # --- Add template files to Git repository
 
 echo
@@ -141,6 +132,15 @@ git add $data_dir.dvc
 
 # Commit change
 fds commit "Transfer tracking of '$data_dir' directory from Git to DVC"
+
+# --- Install pre-commit hooks
+
+echo
+echo "-------------------------------------------------------------------------------"
+echo "Install pre-commit hooks"
+echo
+
+pre-commit install
 
 # --- Clean up
 
