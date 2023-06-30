@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "Velexi Dataset Cookiecutter"
-version = "0.3.4"
+version = "0.3.5"
 description = "Template for DVC datasets"
 authors = ["Kevin Chu <kevin@velexi.com>"]
 license = "Apache-2.0"
