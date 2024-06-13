@@ -1,12 +1,23 @@
 Velexi Dataset Cookiecutter Release Notes
 =========================================
 -------------------------------------------------------------------------------
+0.3.6 (2024-06-13)
+==================
+### Cookiecutter Template
+* Bump minimum Python version to 3.10.
+* Update Python package dependencies.
+
+### Cookiecutter Development
+* Bump minimum Python version to 3.10.
+* Update Python package dependencies.
+
+-------------------------------------------------------------------------------
 0.3.5 (2023-06-30)
 ==================
 ### Cookiecutter Template
 * Update dependencies in pre-commit configuration.
 
-### Cookiecutter Maintenance
+### Cookiecutter Development
 * Fix bug in cookiecutter post-gen script.
 * Update dependencies in pre-commit configuration.
 
