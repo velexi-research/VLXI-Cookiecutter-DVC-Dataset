@@ -8,9 +8,9 @@ authors = ["{{ cookiecutter.author }} <{{ cookiecutter.email }}>"]
 
 [tool.poetry.dependencies]
 python = "{{ cookiecutter.python_version }}"
-pre-commit = "^3.2.1"
-black = "^23.3.0"
-flake8 = "^6.0.0"
+pre-commit = "^3"
+black = "^24"
+flake8 = "^7"
 
 [build-system]
 requires = ["poetry-core"]
